@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Aibek Zhumabekov",
-  title: "Aibek Z. - Software Engineer",
-  description: "Aibek Z. - Software Engineer",
+  title: "Aibek Z. - Software Developer",
+  description: "Aibek Z. - Software Developer",
   url: "https://aibekz.com/",
   email: "aibek.zhumabekov@outlook.com",
   author: {
