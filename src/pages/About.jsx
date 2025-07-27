@@ -4,38 +4,60 @@ import { Suspense, useRef } from 'react';
 import SEO from '../components/SEO';
 import { siteConfig } from '../constants/siteConfig';
 
-// Planet Earth with realistic texture
+// Planet Earth with realistic appearance
 function Earth() {
   const meshRef = useRef();
+  const continentsRef = useRef();
   
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.005; // Slow rotation
     }
+    if (continentsRef.current) {
+      continentsRef.current.rotation.y += 0.005; // Same rotation as Earth
+    }
   });
 
   return (
-    <mesh ref={meshRef} position={[0, 0, 0]}>
-      <sphereGeometry args={[2, 64, 64]} />
-      <meshStandardMaterial
-        color="#4a90e2"
-        metalness={0.1}
-        roughness={0.8}
-        emissive="#0a4d8c"
-        emissiveIntensity={0.1}
-      />
-      {/* Continents as darker patches */}
-      <mesh position={[0, 0, 2.01]}>
-        <sphereGeometry args={[2.01, 32, 32]} />
+    <group>
+      {/* Ocean base - blue sphere */}
+      <mesh ref={meshRef} position={[0, 0, 0]}>
+        <sphereGeometry args={[2, 64, 64]} />
         <meshStandardMaterial
-          color="#2d5016"
-          transparent
-          opacity={0.6}
-          metalness={0.1}
-          roughness={0.9}
+          color="#1e40af"
+          metalness={0.3}
+          roughness={0.7}
+          emissive="#1e3a8a"
+          emissiveIntensity={0.05}
         />
       </mesh>
-    </mesh>
+      
+      {/* Continents - green/brown patches */}
+      <mesh ref={continentsRef} position={[0, 0, 0]}>
+        <sphereGeometry args={[2.02, 32, 32]} />
+        <meshStandardMaterial
+          color="#22c55e"
+          transparent
+          opacity={0.8}
+          metalness={0.1}
+          roughness={0.9}
+          emissive="#166534"
+          emissiveIntensity={0.02}
+        />
+      </mesh>
+      
+      {/* Clouds layer */}
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[2.05, 16, 16]} />
+        <meshStandardMaterial
+          color="#ffffff"
+          transparent
+          opacity={0.2}
+          metalness={0}
+          roughness={1}
+        />
+      </mesh>
+    </group>
   );
 }
 
