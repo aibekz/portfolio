@@ -1,156 +1,103 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
+import { OrbitControls, Stars, Sphere, Box, Torus } from '@react-three/drei';
 import { Suspense, useRef } from 'react';
 import SEO from '../components/SEO';
 import { siteConfig } from '../constants/siteConfig';
 
-// Planet Earth with realistic appearance
-function Earth() {
+// Animated 3D Sphere with gradient material
+function AnimatedSphere() {
   const meshRef = useRef();
-  const continentsRef = useRef();
-  
-  useFrame(() => {
+
+  useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y += 0.005; // Slow rotation
-    }
-    if (continentsRef.current) {
-      continentsRef.current.rotation.y += 0.005; // Same rotation as Earth
+      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
+      meshRef.current.rotation.y += 0.01;
+      meshRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.8) * 0.3;
     }
   });
 
   return (
-    <group>
-      {/* Ocean base - blue sphere */}
-      <mesh ref={meshRef} position={[0, 0, 0]}>
-        <sphereGeometry args={[2, 64, 64]} />
-        <meshStandardMaterial
-          color="#1e40af"
-          metalness={0.3}
-          roughness={0.7}
-          emissive="#1e3a8a"
-          emissiveIntensity={0.05}
-        />
-      </mesh>
-      
-      {/* Continents - green/brown patches */}
-      <mesh ref={continentsRef} position={[0, 0, 0]}>
-        <sphereGeometry args={[2.02, 32, 32]} />
-        <meshStandardMaterial
-          color="#22c55e"
-          transparent
-          opacity={0.8}
-          metalness={0.1}
-          roughness={0.9}
-          emissive="#166534"
-          emissiveIntensity={0.02}
-        />
-      </mesh>
-      
-      {/* Clouds layer */}
-      <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={[2.05, 16, 16]} />
-        <meshStandardMaterial
-          color="#ffffff"
-          transparent
-          opacity={0.2}
-          metalness={0}
-          roughness={1}
-        />
-      </mesh>
-    </group>
+    <mesh ref={meshRef} position={[0, 0, 0]}>
+      <sphereGeometry args={[1.2, 64, 64]} />
+      <meshStandardMaterial
+        color="#6366f1"
+        metalness={0.7}
+        roughness={0.2}
+        emissive="#1e1b4b"
+        emissiveIntensity={0.1}
+      />
+    </mesh>
   );
 }
 
-// Rubber Duck orbiting around Earth
-function RubberDuck() {
-  const duckRef = useRef();
-  const orbitRadius = 4;
+// Floating geometric shapes
+function FloatingShapes() {
+  return (
+    <>
+      <FloatingBox position={[-3, 2, -2]} />
+      <FloatingTorus position={[3, -1, -1]} />
+      <FloatingBox position={[2, 3, -3]} scale={0.6} />
+      <FloatingTorus position={[-2, -2, 1]} scale={0.8} />
+    </>
+  );
+}
+
+// Individual floating box
+function FloatingBox({ position, scale = 1 }) {
+  const meshRef = useRef();
 
   useFrame((state) => {
-    if (duckRef.current) {
-      const time = state.clock.elapsedTime * 0.5;
-      
-      // Circular orbit around Earth
-      duckRef.current.position.x = Math.cos(time) * orbitRadius;
-      duckRef.current.position.z = Math.sin(time) * orbitRadius;
-      duckRef.current.position.y = Math.sin(time * 2) * 0.5; // Slight vertical bobbing
-      
-      // Make duck face the direction it's moving
-      duckRef.current.rotation.y = time + Math.PI / 2;
-      
-      // Slight bobbing rotation
-      duckRef.current.rotation.x = Math.sin(time * 3) * 0.1;
-      duckRef.current.rotation.z = Math.sin(time * 2) * 0.05;
+    if (meshRef.current) {
+      meshRef.current.rotation.x += 0.01;
+      meshRef.current.rotation.y += 0.01;
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime + position[0]) * 0.3;
     }
   });
 
   return (
-    <group ref={duckRef}>
-      {/* Duck Body */}
-      <mesh position={[0, 0, 0]} scale={[0.8, 0.6, 1]}>
-        <sphereGeometry args={[0.5, 16, 16]} />
-        <meshStandardMaterial
-          color="#ffeb3b"
-          metalness={0.1}
-          roughness={0.3}
-        />
-      </mesh>
-      
-      {/* Duck Head */}
-      <mesh position={[0, 0.4, 0.3]} scale={[0.6, 0.6, 0.6]}>
-        <sphereGeometry args={[0.4, 16, 16]} />
-        <meshStandardMaterial
-          color="#ffeb3b"
-          metalness={0.1}
-          roughness={0.3}
-        />
-      </mesh>
-      
-      {/* Duck Beak */}
-      <mesh position={[0, 0.35, 0.65]} rotation={[0, 0, 0]} scale={[0.3, 0.2, 0.4]}>
-        <coneGeometry args={[0.15, 0.3, 8]} />
-        <meshStandardMaterial
-          color="#ff9800"
-          metalness={0.2}
-          roughness={0.4}
-        />
-      </mesh>
-      
-      {/* Duck Eyes */}
-      <mesh position={[-0.15, 0.5, 0.5]} scale={[0.8, 0.8, 0.8]}>
-        <sphereGeometry args={[0.08, 8, 8]} />
-        <meshStandardMaterial color="#000000" />
-      </mesh>
-      <mesh position={[0.15, 0.5, 0.5]} scale={[0.8, 0.8, 0.8]}>
-        <sphereGeometry args={[0.08, 8, 8]} />
-        <meshStandardMaterial color="#000000" />
-      </mesh>
-      
-      {/* Duck Wing */}
-      <mesh position={[0.4, 0.1, 0]} rotation={[0, 0, 0.3]} scale={[0.3, 0.5, 0.8]}>
-        <sphereGeometry args={[0.3, 12, 12]} />
-        <meshStandardMaterial
-          color="#f9c74f"
-          metalness={0.1}
-          roughness={0.4}
-        />
-      </mesh>
-      <mesh position={[-0.4, 0.1, 0]} rotation={[0, 0, -0.3]} scale={[0.3, 0.5, 0.8]}>
-        <sphereGeometry args={[0.3, 12, 12]} />
-        <meshStandardMaterial
-          color="#f9c74f"
-          metalness={0.1}
-          roughness={0.4}
-        />
-      </mesh>
-    </group>
+    <mesh ref={meshRef} position={position} scale={scale}>
+      <boxGeometry args={[0.5, 0.5, 0.5]} />
+      <meshStandardMaterial
+        color="#ec4899"
+        metalness={0.5}
+        roughness={0.3}
+        emissive="#831843"
+        emissiveIntensity={0.1}
+      />
+    </mesh>
+  );
+}
+
+// Individual floating torus
+function FloatingTorus({ position, scale = 1 }) {
+  const meshRef = useRef();
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += 0.02;
+      meshRef.current.rotation.z += 0.01;
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 1.2 + position[0]) * 0.2;
+    }
+  });
+
+  return (
+    <mesh ref={meshRef} position={position} scale={scale}>
+      <torusGeometry args={[0.4, 0.15, 16, 100]} />
+      <meshStandardMaterial
+        color="#10b981"
+        metalness={0.6}
+        roughness={0.2}
+        emissive="#064e3b"
+        emissiveIntensity={0.1}
+      />
+    </mesh>
   );
 }
 
 // Loading fallback for 3D scene
 function SceneLoader() {
   return (
-    <div className="h-[600px] mb-8 flex items-center justify-center bg-gray-100 rounded-lg">
+    <div className="h-[400px] mb-8 flex items-center justify-center bg-gray-100 rounded-lg">
       <div className="text-body text-gray-500 font-mono">Loading 3D scene...</div>
     </div>
   );
@@ -162,48 +109,26 @@ function Scene() {
     <div className="mb-8">
       <Suspense fallback={<SceneLoader />}>
         <Canvas
-          style={{ height: '600px' }}
+          style={{ height: '500px' }}
           className="rounded-lg bg-gradient-to-br from-slate-900 to-slate-800"
-          camera={{ position: [8, 4, 8], fov: 60 }}
+          camera={{ position: [0, 0, 6], fov: 75 }}
         >
-          {/* Lighting setup */}
-          <ambientLight intensity={0.3} />
-          <pointLight position={[10, 10, 10]} intensity={1.2} />
-          <pointLight position={[-10, -10, -5]} intensity={0.8} color="#4f46e5" />
-          <spotLight 
-            position={[0, 15, 0]} 
-            angle={0.4} 
-            penumbra={1} 
-            intensity={0.8}
-          />
+          <ambientLight intensity={0.4} />
+          <pointLight position={[10, 10, 10]} intensity={1} />
+          <pointLight position={[-10, -10, -5]} intensity={0.5} color="#4f46e5" />
+          <spotLight position={[0, 10, 0]} angle={0.3} penumbra={1} intensity={0.5} />
 
-          {/* Main scene objects */}
-          <Earth />
-          <RubberDuck />
-          
-          {/* Background stars */}
-          <Stars 
-            radius={150} 
-            depth={50} 
-            count={5000} 
-            factor={4} 
-            saturation={0} 
-            fade 
-            speed={0.5} 
-          />
+          <AnimatedSphere />
+          <FloatingShapes />
+          <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
 
-          {/* Interactive controls - full movement and zoom */}
           <OrbitControls
-            enableZoom={true}
-            enablePan={true}
-            enableRotate={true}
-            zoomSpeed={0.6}
-            panSpeed={0.8}
-            rotateSpeed={0.4}
-            minDistance={3}
-            maxDistance={20}
-            maxPolarAngle={Math.PI}
-            minPolarAngle={0}
+            enableZoom={false}
+            enablePan={false}
+            autoRotate
+            autoRotateSpeed={1}
+            maxPolarAngle={Math.PI / 1.8}
+            minPolarAngle={Math.PI / 2.2}
           />
         </Canvas>
       </Suspense>
@@ -222,13 +147,6 @@ export default function About() {
         url={`${siteConfig.url}about`}
       />
       <div className="px-6 py-20 max-w-4xl mx-auto">
-        <div className="mb-4 text-center">
-          <h2 className="text-2xl font-bold text-white mb-2">🌍 Rubber Duck's Space Adventure 🦆</h2>
-          <p className="text-gray-300 font-mono text-sm">
-            Use mouse to rotate • Scroll to zoom • Drag to pan
-          </p>
-        </div>
-        
         <Scene />
 
         <div className="max-w-4xl mx-auto space-y-8">
