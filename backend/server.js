@@ -27,7 +27,7 @@ if (!process.env.JWT_SECRET) {
 // CORS configuration
 const corsOptions = {
   origin: NODE_ENV === 'production' 
-    ? ['https://your-netlify-domain.netlify.app', 'https://your-custom-domain.com']
+    ? ['https://aibekz.netlify.app', 'https://portfolio-aibekz.netlify.app', 'https://nviaxis.netlify.app']
     : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true,
   optionsSuccessStatus: 200

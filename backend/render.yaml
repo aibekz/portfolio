@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: nviaxis-backend
+    name: aibekz
     env: node
     plan: free
     buildCommand: npm install
