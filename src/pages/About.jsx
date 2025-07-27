@@ -1,6 +1,7 @@
 import SEO from '../components/SEO';
 import { siteConfig } from '../constants/siteConfig';
 import DigitalRain from '../components/DigitalRain';
+import { Link } from 'react-router-dom';
 
 export default function About() {
   const aboutDescription = "Learn more about Aibek Zhumabekov, a full-stack developer passionate about building meaningful web applications.";
@@ -43,7 +44,11 @@ export default function About() {
                 His approach combines technical expertise with creative problem-solving, ensuring that
                 every project not only functions flawlessly but also delivers an exceptional user experience.
               </p>
-              <p className="text-body leading-relaxed text-gray-700 font-mono">
+              <p className="text-body leading-relaxed text-gray-700 mb-6 font-mono">
+                Aibek also writes tech-related <Link to="/posts" className='text-linkblue underline'>Posts</Link> sharing insights, 
+                tutorials, and thoughts on software development, emerging technologies, and industry trends.
+              </p>
+              <p className="text-body leading-relaxed text-gray-700 mb-4 font-mono">
                 When he's not online, he enjoys spending time behind the lens with his camera.
               </p>
             </div>

@@ -27,7 +27,7 @@ export default function Home() {
             {siteConfig.author.title}
           </h2>
 
-          <p className="text-body max-w-xl mx-auto font-mono leading-relaxed text-gray-600">
+          <p className="text-body max-w-xl mx-auto font-mono leading-relaxed text-gray-600 mb-6">
             {siteConfig.author.subtitle}
           </p>
         </div>
