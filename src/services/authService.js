@@ -3,6 +3,29 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001
 class AuthService {
   constructor() {
     this.token = null;
+    this.isRefreshing = false;
+    this.authListeners = [];
+  }
+
+  // Add listener for authentication events
+  addAuthListener(callback) {
+    this.authListeners.push(callback);
+  }
+
+  // Remove listener for authentication events
+  removeAuthListener(callback) {
+    this.authListeners = this.authListeners.filter(listener => listener !== callback);
+  }
+
+  // Notify all listeners of authentication changes
+  notifyAuthChange(isAuthenticated) {
+    this.authListeners.forEach(callback => {
+      try {
+        callback(isAuthenticated);
+      } catch (error) {
+        console.error('Error in auth listener:', error);
+      }
+    });
   }
 
   getStoredToken() {
@@ -82,7 +105,10 @@ class AuthService {
       const data = await response.json();
 
       if (!response.ok) {
-        this.logout();
+        // Only logout if it's an authentication error (401/403)
+        if (response.status === 401 || response.status === 403) {
+          this.logout();
+        }
         return { valid: false };
       }
 
@@ -90,14 +116,16 @@ class AuthService {
 
     } catch (error) {
       console.error('Token verification error:', error);
-      this.logout();
-      return { valid: false };
+      // Don't logout on network errors - let the context handle it
+      // Only logout if it's a clear authentication failure
+      return { valid: false, networkError: true };
     }
   }
 
   logout() {
     this.token = null;
     localStorage.removeItem('admin_token');
+    this.notifyAuthChange(false);
   }
 
   getToken() {
@@ -116,6 +144,37 @@ class AuthService {
     } : {
       'Content-Type': 'application/json',
     };
+  }
+
+  // Helper method to make authenticated API requests with error handling
+  async makeAuthenticatedRequest(url, options = {}) {
+    const headers = this.getAuthHeaders();
+    
+    try {
+      const response = await fetch(url, {
+        ...options,
+        headers: {
+          ...headers,
+          ...options.headers,
+        },
+      });
+
+      // If we get a 401/403, the token is invalid
+      if (response.status === 401 || response.status === 403) {
+        this.logout();
+        throw new Error('Authentication failed');
+      }
+
+      return response;
+    } catch (error) {
+      // Re-throw the error for the caller to handle
+      throw error;
+    }
+  }
+
+  // Method to check if we should attempt to refresh auth state
+  shouldRefreshAuth() {
+    return this.isAuthenticated() && !this.isRefreshing;
   }
 }
 

@@ -17,19 +17,20 @@ const formatDate = (dateString) => {
 };
 
 export default function AdminDashboard() {
-  const { isAuthenticated, logout } = useAdmin();
+  const { isAuthenticated, isLoading, logout } = useAdmin();
   const { posts, deletePost, loading, error, getPostStats } = usePosts();
   const navigate = useNavigate();
   const [stats, setStats] = useState({ totalPosts: 0, recentPosts: 0 });
   const [statsLoading, setStatsLoading] = useState(true);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    // Wait for authentication check to complete before redirecting
+    if (!isLoading && !isAuthenticated) {
       navigate('/admin/login');
-    } else {
+    } else if (!isLoading && isAuthenticated) {
       loadStats();
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, isLoading, navigate]);
 
   const loadStats = async () => {
     try {

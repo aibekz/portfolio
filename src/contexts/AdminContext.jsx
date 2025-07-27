@@ -10,12 +10,48 @@ export function AdminProvider({ children }) {
   useEffect(() => {
     // Check if user is already authenticated on app load
     const checkAuth = async () => {
-      const result = await authService.verifyToken();
-      setIsAuthenticated(result.valid);
-      setIsLoading(false);
+      // First check if we have a token in localStorage
+      const hasToken = authService.isAuthenticated();
+      
+      if (!hasToken) {
+        setIsAuthenticated(false);
+        setIsLoading(false);
+        return;
+      }
+
+      // If we have a token, assume user is authenticated initially
+      // This prevents logout on page refresh if there are network issues
+      setIsAuthenticated(true);
+      
+      try {
+        // Try to verify the token with the server
+        const result = await authService.verifyToken();
+        
+        if (!result.valid) {
+          // Only log out if the server explicitly says the token is invalid
+          setIsAuthenticated(false);
+        }
+      } catch (error) {
+        // On network errors, keep the user logged in
+        // The token will be verified on the next API call
+        console.warn('Token verification failed due to network error:', error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
+    // Listen for authentication changes from the auth service
+    const handleAuthChange = (isAuth) => {
+      setIsAuthenticated(isAuth);
+    };
+
+    authService.addAuthListener(handleAuthChange);
     checkAuth();
+
+    // Cleanup listener on unmount
+    return () => {
+      authService.removeAuthListener(handleAuthChange);
+    };
   }, []);
 
   const login = async (username, password) => {
@@ -53,12 +89,29 @@ export function AdminProvider({ children }) {
     setIsAuthenticated(false);
   };
 
+  // Method to refresh authentication state
+  const refreshAuth = async () => {
+    if (!authService.isAuthenticated()) {
+      setIsAuthenticated(false);
+      return;
+    }
+
+    try {
+      const result = await authService.verifyToken();
+      setIsAuthenticated(result.valid);
+    } catch (error) {
+      console.warn('Auth refresh failed:', error);
+      // Don't change auth state on network errors
+    }
+  };
+
   const value = {
     isAuthenticated,
     isLoading,
     login,
     signup,
-    logout
+    logout,
+    refreshAuth
   };
 
   return (

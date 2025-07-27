@@ -6,9 +6,8 @@ export const postService = {
   // Create a new post
   async createPost(postData) {
     try {
-      const response = await fetch(`${API_BASE_URL}/posts`, {
+      const response = await authService.makeAuthenticatedRequest(`${API_BASE_URL}/posts`, {
         method: 'POST',
-        headers: authService.getAuthHeaders(),
         body: JSON.stringify(postData),
       });
 
@@ -84,9 +83,8 @@ export const postService = {
   // Update a post
   async updatePost(id, updateData) {
     try {
-      const response = await fetch(`${API_BASE_URL}/posts/${id}`, {
+      const response = await authService.makeAuthenticatedRequest(`${API_BASE_URL}/posts/${id}`, {
         method: 'PUT',
-        headers: authService.getAuthHeaders(),
         body: JSON.stringify(updateData),
       });
 
@@ -105,9 +103,8 @@ export const postService = {
   // Delete a post
   async deletePost(id) {
     try {
-      const response = await fetch(`${API_BASE_URL}/posts/${id}`, {
+      const response = await authService.makeAuthenticatedRequest(`${API_BASE_URL}/posts/${id}`, {
         method: 'DELETE',
-        headers: authService.getAuthHeaders(),
       });
 
       if (!response.ok) {

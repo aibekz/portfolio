@@ -7,15 +7,15 @@ import SEO from '../components/SEO';
 import { siteConfig } from '../constants/siteConfig';
 
 export default function AdminCreatePost() {
-  const { isAuthenticated } = useAdmin();
+  const { isAuthenticated, isLoading } = useAdmin();
   const navigate = useNavigate();
   const { createPost } = usePosts();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isLoading && !isAuthenticated) {
       navigate('/admin/login');
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, isLoading, navigate]);
 
   if (!isAuthenticated) {
     return null;

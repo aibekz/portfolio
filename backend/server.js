@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
 import postRoutes from './routes/posts.js';
 import authRoutes from './routes/auth.js';
+import User from './models/User.js';
 
 dotenv.config();
 
@@ -28,7 +29,7 @@ if (!process.env.JWT_SECRET) {
 // Rate limiting configuration
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // Limit each IP to 5 requests per windowMs for auth routes
+  max: NODE_ENV === 'development' ? 50 : 5, // More lenient in development
   message: { error: 'Too many authentication attempts, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
@@ -46,7 +47,7 @@ const generalLimiter = rateLimit({
 const corsOptions = {
   origin: NODE_ENV === 'production' 
     ? ['https://aibekz.com', 'https://aibekz.netlify.app']
-    : ['http://localhost:5173', 'http://localhost:3000'],
+    : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'],
   credentials: true,
   optionsSuccessStatus: 200
 };
@@ -57,12 +58,36 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(generalLimiter);
 
+// Initialize admin user
+async function initializeAdmin() {
+  try {
+    const adminExists = await User.findOne({ username: 'admin' });
+    if (!adminExists) {
+      const adminUser = new User({
+        username: 'admin',
+        email: 'admin@aibekz.com',
+        password: process.env.ADMIN_PASSWORD || '12323Aiba@',
+        role: 'admin'
+      });
+      await adminUser.save();
+      console.log('Admin user created successfully');
+    } else {
+      console.log('Admin user already exists');
+    }
+  } catch (error) {
+    console.error('Error initializing admin user:', error);
+  }
+}
+
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('Connected to MongoDB'))
+.then(async () => {
+  console.log('Connected to MongoDB');
+  await initializeAdmin();
+})
 .catch((error) => console.error('MongoDB connection error:', error));
 
 // Root route
