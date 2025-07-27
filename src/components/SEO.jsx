@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { siteConfig } from '../constants/siteConfig';
+import { useEffect } from 'react';
 
 const SEO = ({ 
   title, 
@@ -9,6 +10,11 @@ const SEO = ({
   type = 'website'
 }) => {
   const fullTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.title;
+
+  // Force title update for React 19 compatibility
+  useEffect(() => {
+    document.title = fullTitle;
+  }, [fullTitle]);
 
   return (
     <Helmet>

@@ -20,7 +20,7 @@ const Navbar = () => {
                         key={label}
                         to={href}
                         aria-label={label}
-                        className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                        className="focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
                     >
                         {iconElement}
                     </Link>
@@ -34,7 +34,7 @@ const Navbar = () => {
                     aria-label={label}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                    className="focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
                 >
                     {iconElement}
                 </a>
@@ -42,7 +42,7 @@ const Navbar = () => {
         });
     return (
         <>
-            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8">
+            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 bg-white">
                 <div className="flex items-center justify-between">
                     {/* Logo always on left */}
                     <div>

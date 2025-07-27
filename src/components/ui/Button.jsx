@@ -27,7 +27,11 @@ const Button = ({
   
   if (to) {
     return (
-      <Link to={to} className={classes} {...props}>
+      <Link 
+        to={to} 
+        className={`${classes} focus:ring-linkblue focus:ring-offset-2 rounded`} 
+        {...props}
+      >
         {children}
       </Link>
     );

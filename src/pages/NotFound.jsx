@@ -1,4 +1,4 @@
-import Button from "../components/ui/Button";
+import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import { siteConfig } from "../constants/siteConfig";
 
@@ -21,21 +21,13 @@ export default function NotFound() {
                     </div>
                     
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <Button 
-                            to="/"  
-                            size="lg"
-                            className="rounded-lg flex items-center gap-2"
+                        <Link 
+                            to="/"
+                            className="text-linkblue underline focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded text-lg font-medium text-gray-900"
+                            aria-label="Go back to home page"
                         >
-                            Back to Home <span>&rarr;</span>
-                        </Button>
-                        <Button 
-                            to="/contact"
-                            variant="outline"
-                            size="lg"
-                            className="rounded-lg border-gray-300 text-gray-700 hover:bg-gray-100"
-                        >
-                            Contact Me
-                        </Button>
+                            Back to Home &rarr;
+                        </Link>
                     </div>
                 </div>
             </div>

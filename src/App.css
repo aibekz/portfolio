@@ -3,4 +3,20 @@
 @theme {
   --color-linkblue: #0000EE;
   --font-family-mono: 'Lucida Console', monospace;
+  --font-size-header: 27px;
+  --font-size-body: 18px;
+}
+
+/* Custom utility classes */
+.text-header {
+  font-size: 27px;
+}
+
+.text-body {
+  font-size: 18px;
+}
+
+/* Ensure mono font is applied */
+.font-mono {
+  font-family: 'Lucida Console', monospace;
 }
