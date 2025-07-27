@@ -11,6 +11,45 @@
   status = 200
   force = true
 
+# Don't redirect static assets
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+# Don't redirect JS/CSS files
+[[redirects]]
+  from = "/*.js"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.css"
+  to = "/:splat"
+  status = 200
+
+# Don't redirect other static files
+[[redirects]]
+  from = "/*.ico"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.png"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.jpg"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*.svg"
+  to = "/:splat"
+  status = 200
+
+# SPA fallback - must be last
 [[redirects]]
   from = "/*"
   to = "/index.html"
