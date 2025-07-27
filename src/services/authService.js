@@ -2,7 +2,14 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001
 
 class AuthService {
   constructor() {
-    this.token = localStorage.getItem('admin_token');
+    this.token = null;
+  }
+
+  getStoredToken() {
+    if (!this.token) {
+      this.token = localStorage.getItem('admin_token');
+    }
+    return this.token;
   }
 
   async signup(username, email, password) {
@@ -58,7 +65,8 @@ class AuthService {
   }
 
   async verifyToken() {
-    if (!this.token) {
+    const token = this.getStoredToken();
+    if (!token) {
       return { valid: false };
     }
 
@@ -66,7 +74,7 @@ class AuthService {
       const response = await fetch(`${API_BASE_URL}/auth/verify`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${this.token}`,
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       });
@@ -93,16 +101,17 @@ class AuthService {
   }
 
   getToken() {
-    return this.token;
+    return this.getStoredToken();
   }
 
   isAuthenticated() {
-    return !!this.token;
+    return !!this.getStoredToken();
   }
 
   getAuthHeaders() {
-    return this.token ? {
-      'Authorization': `Bearer ${this.token}`,
+    const token = this.getStoredToken();
+    return token ? {
+      'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
     } : {
       'Content-Type': 'application/json',
