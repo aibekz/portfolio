@@ -3,20 +3,43 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
 import { socialLinks } from '../constants/socialLinks.js';
+import { isExternalLink } from '../utils';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const renderSocialIcons = (size = 'w-6 h-6', extraClasses = '') =>
-        socialLinks.map(({ href, icon: Icon, label, color }) =>
-            <Link
-                key={label}
-                to={href}
-                aria-label={label}
-            >
-                <Icon className={`${size} ${color} transition ${extraClasses}`} />
-            </Link>
-        );
+        socialLinks.map(({ href, icon: Icon, label, color, isInternal }) => {
+            const iconElement = (
+                <Icon className={`${size} ${color} transition-colors duration-200 ${extraClasses}`} />
+            );
+            
+            if (isInternal || !isExternalLink(href)) {
+                return (
+                    <Link
+                        key={label}
+                        to={href}
+                        aria-label={label}
+                        className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                    >
+                        {iconElement}
+                    </Link>
+                );
+            }
+            
+            return (
+                <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                >
+                    {iconElement}
+                </a>
+            );
+        });
     return (
         <>
             <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8">

@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme {
+  --color-linkblue: #0000EE;
+  --font-family-mono: 'Lucida Console', monospace;
+}
