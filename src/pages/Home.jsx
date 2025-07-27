@@ -16,7 +16,7 @@ export default function Home() {
             {siteConfig.author.greeting}
             <Link 
               to="/about" 
-              className="text-linkblue underline ml-1 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+              className="text-linkblue underline ml-1 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
               aria-label={`Learn more about ${siteConfig.author.name}`}
             >
               {siteConfig.author.name}

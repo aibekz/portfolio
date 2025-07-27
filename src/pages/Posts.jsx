@@ -79,21 +79,21 @@ export default function Posts() {
             <div className="space-y-6">
               {posts.map((post) => (
                 <article key={post.id} className="border-b border-gray-200 pb-6 last:border-b-0">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <div className="flex flex-col gap-2">
+                    <time 
+                      dateTime={post.date}
+                      className="text-gray-600 font-mono text-sm block"
+                    >
+                      {formatDate(post.date)}
+                    </time>
                     <h2>
                       <Link 
                         to={`/posts/${post.id}`}
-                        className="text-linkblue underline text-body font-mono hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+                        className="text-linkblue underline text-body font-mono hover:text-black focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
                       >
                         {post.title}
                       </Link>
                     </h2>
-                    <time 
-                      dateTime={post.date}
-                      className="text-gray-600 font-mono text-sm sm:text-base whitespace-nowrap"
-                    >
-                      {formatDate(post.date)}
-                    </time>
                   </div>
                 </article>
               ))}
