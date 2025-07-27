@@ -12,7 +12,7 @@ export default function Home() {
       />
       <div className="flex-1 flex items-center justify-center text-center px-6">
         <div className="text-gray-900">
-          <h1 className="text-header font-semibold font-mono mb-4">
+          <h1 className="text-4xl md:text-6xl font-semibold font-mono mb-4">
             {siteConfig.author.greeting}
             <Link 
               to="/about" 
@@ -23,7 +23,7 @@ export default function Home() {
             </Link>
           </h1>
 
-          <h2 className="text-header font-semibold font-mono mb-6 text-gray-800">
+          <h2 className="text-4xl md:text-6xl font-semibold font-mono mb-6 text-gray-800">
             {siteConfig.author.title}
           </h2>
 
