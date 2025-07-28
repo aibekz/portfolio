@@ -77,7 +77,42 @@ export function PostsProvider({ children }) {
   const getPostById = (id) => posts.find(post => post.id === id);
 
   // Read a single post by slug
-  const getPostBySlug = (slug) => posts.find(post => post.slug === slug);
+  const getPostBySlug = async (slug) => {
+    // First try to find in local cache
+    const cachedPost = posts.find(post => post.slug === slug);
+    if (cachedPost) {
+      return cachedPost;
+    }
+    
+    // If not found in cache, fetch from API
+    try {
+      const post = await postService.getPostBySlug(slug);
+      if (post) {
+        // Add to local cache if found
+        setPosts(prev => {
+          // Check if post already exists (by ID) to avoid duplicates
+          const exists = prev.find(p => p.id === post.id);
+          if (exists) {
+            return prev;
+          }
+          return [...prev, post];
+        });
+        
+        // Update cache
+        const cache = cacheRef.current;
+        if (cache.posts) {
+          const exists = cache.posts.find(p => p.id === post.id);
+          if (!exists) {
+            cache.posts = [...cache.posts, post];
+          }
+        }
+      }
+      return post;
+    } catch (err) {
+      console.error('Error fetching post by slug:', err);
+      return null;
+    }
+  };
 
   // Update a post
   const updatePost = async (id, updatedData) => {

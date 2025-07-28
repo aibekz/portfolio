@@ -88,7 +88,7 @@ export default function Posts() {
                     </time>
                     <h2>
                       <Link 
-                        to={`/posts/${post.id}`}
+                        to={`/posts/${post.slug}`}
                         className="text-linkblue text-body font-mono hover:text-black focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
                       >
                         {post.title}

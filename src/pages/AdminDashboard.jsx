@@ -170,7 +170,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="flex gap-2">
                         <Button
-                          to={`/posts/${post.id}`}
+                          to={`/posts/${post.slug}`}
                           variant="secondary"
                           size="sm"
                         >

@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { usePosts } from '../contexts/PostsContext';
 import SEO from '../components/SEO';
 import MarkdownRenderer from '../components/MarkdownRenderer';
@@ -16,10 +17,62 @@ const formatDate = (dateString) => {
 
 export default function PostDetail() {
   const navigate = useNavigate();
-  const { id } = useParams();
-  const { getPostById } = usePosts();
-  
-  const post = getPostById(id);
+  const { slug } = useParams();
+  const { getPostBySlug } = usePosts();
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const fetchedPost = await getPostBySlug(slug);
+        setPost(fetchedPost);
+      } catch (err) {
+        setError(err.message);
+        console.error('Error fetching post:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (slug) {
+      fetchPost();
+    }
+  }, [slug, getPostBySlug]);
+
+  if (loading) {
+    return (
+      <div className="flex-1 px-6 py-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-body font-mono text-gray-600">Loading post...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex-1 px-6 py-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-header font-mono font-semibold mb-4 text-gray-900">
+            Error Loading Post
+          </h1>
+          <p className="text-body font-mono text-red-600 mb-6">
+            {error}
+          </p>
+          <button
+            onClick={() => navigate('/posts')}
+            className="text-linkblue underline font-mono text-body hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+          >
+            Back to Posts
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (!post) {
     return (
@@ -42,13 +95,12 @@ export default function PostDetail() {
     );
   }
 
-
   return (
     <>
       <SEO 
         title={`${post.title} - Aibek Z.`}
         description={post.content.substring(0, 160) + '...'}
-        url={`${siteConfig.url}/posts/${id}`}
+        url={`${siteConfig.url}/posts/${slug}`}
       />
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto">
