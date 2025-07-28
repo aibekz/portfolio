@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "Aibek Z. - Software Developer",
   description: "Aibek Z. - Software Developer",
   url: "https://aibekz.com/",
-  email: "aibek.zhumabekov@outlook.com",
+  email: "aibek.zhumabekov@proton.me",
   author: {
     logo: "<Aibek Z/>",
     name: "Aibek Z.",
