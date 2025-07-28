@@ -11,19 +11,19 @@ export default function Home() {
         url={siteConfig.url}
       />
       <div className="flex-1 flex items-center justify-center text-center px-6">
-        <div className="text-gray-900">
+        <div className="text-darktext">
           <h1 className="text-4xl font-semibold font-mono mb-4">
             {siteConfig.author.greeting}
             <Link 
               to="/about" 
-              className="text-linkblue underline ml-1 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+              className="text-linkblue underline ml-1 hover:text-darktext focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
               aria-label={`Learn more about ${siteConfig.author.name}`}
             >
               {siteConfig.author.name}
             </Link>
           </h1>
 
-          <h2 className="text-4xl font-semibold font-mono mb-6 text-gray-800">
+          <h2 className="text-4xl font-semibold font-mono mb-6 text-darktext">
             {siteConfig.author.title}
           </h2>
 

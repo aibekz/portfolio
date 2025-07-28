@@ -2,6 +2,7 @@
 
 @theme {
   --color-linkblue: #0000EE;
+  --color-darktext: #111111;
   --font-family-mono: 'Lucida Console', monospace;
   --font-size-header: 27px;
   --font-size-body: 18px;

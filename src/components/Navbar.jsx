@@ -28,8 +28,7 @@ const Navbar = () => {
                             <Link
                                 key={href}
                                 to={href}
-                                className="hover:text-linkblue transition-colors duration-200 font-medium"
-                                style={{ color: '#111111' }}
+                                className="text-darktext hover:text-linkblue transition-colors duration-200 font-medium"
                             >
                                 {label}
                             </Link>
@@ -44,9 +43,9 @@ const Navbar = () => {
                             aria-label="Toggle menu"
                         >
                             {menuOpen ? (
-                                <HiX className="w-6 h-6" style={{ color: '#111111' }} />
+                                <HiX className="w-6 h-6 text-darktext" />
                             ) : (
-                                <HiMenu className="w-6 h-6" style={{ color: '#111111' }} />
+                                <HiMenu className="w-6 h-6 text-darktext" />
                             )}
                         </button>
                     </div>
@@ -64,7 +63,7 @@ const Navbar = () => {
                                 className="focus:outline-none p-2"
                                 aria-label="Close menu"
                             >
-                                <HiX className="w-8 h-8" style={{ color: '#111111' }} />
+                                <HiX className="w-8 h-8 text-darktext" />
                             </button>
                         </div>
 
@@ -82,8 +81,7 @@ const Navbar = () => {
                                             key={href}
                                             to={href}
                                             onClick={() => setMenuOpen(false)}
-                                            className="block text-xl hover:text-linkblue transition-colors duration-200 font-medium"
-                                            style={{ color: '#111111' }}
+                                            className="block text-xl text-darktext hover:text-linkblue transition-colors duration-200 font-medium"
                                         >
                                             {label}
                                         </Link>
