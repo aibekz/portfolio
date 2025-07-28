@@ -63,7 +63,7 @@ export default function Posts() {
         url={`${siteConfig.url}/posts`}
       />
       <div className="flex-1 px-6 py-8 mt-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h1 className="text-header font-mono font-semibold mb-8 text-darktext">
             Posts
           </h1>
@@ -77,7 +77,7 @@ export default function Posts() {
           ) : (
             <div className="space-y-6">
               {posts.map((post) => (
-                <article key={post.id} className="border-b border-gray-200 pb-6 last:border-b-0">
+                <article key={post.id} className="last:border-b-0">
                   <div className="flex flex-col gap-2">
                     <h2>
                       <Link 
