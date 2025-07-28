@@ -23,10 +23,29 @@ export const postService = {
     }
   },
 
-  // Get all posts
-  async getAllPosts() {
+  // Get all posts with pagination
+  async getAllPosts(page = 1, limit = 50) {
     try {
-      const response = await fetch(`${API_BASE_URL}/posts`);
+      const response = await fetch(`${API_BASE_URL}/posts?page=${page}&limit=${limit}`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to fetch posts');
+      }
+
+      const data = await response.json();
+      // Return just the posts array for backward compatibility
+      return data.posts || data;
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+      throw error;
+    }
+  },
+
+  // Get posts with pagination info
+  async getPostsWithPagination(page = 1, limit = 10) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/posts?page=${page}&limit=${limit}`);
 
       if (!response.ok) {
         const error = await response.json();
@@ -35,7 +54,7 @@ export const postService = {
 
       return await response.json();
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      console.error('Error fetching posts with pagination:', error);
       throw error;
     }
   },

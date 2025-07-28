@@ -4,11 +4,20 @@ import { authenticateToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// GET /api/posts - Get all posts
+// GET /api/posts - Get all posts with pagination
 router.get('/', async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    // Get total count for pagination info
+    const totalPosts = await Post.countDocuments();
+    
     const posts = await Post.find()
       .sort({ date: -1 }) // Sort by date, newest first
+      .skip(skip)
+      .limit(limit)
       .lean();
     
     // Format posts for frontend
@@ -22,7 +31,16 @@ router.get('/', async (req, res) => {
       updatedAt: post.updatedAt
     }));
     
-    res.json(formattedPosts);
+    res.json({
+      posts: formattedPosts,
+      pagination: {
+        currentPage: page,
+        totalPages: Math.ceil(totalPosts / limit),
+        totalPosts,
+        hasNextPage: page < Math.ceil(totalPosts / limit),
+        hasPrevPage: page > 1
+      }
+    });
   } catch (error) {
     console.error('Error fetching posts:', error);
     res.status(500).json({ error: 'Failed to fetch posts' });

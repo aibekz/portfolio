@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { postService } from '../services/postService.js';
 
 const PostsContext = createContext();
@@ -7,17 +7,38 @@ export function PostsProvider({ children }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const cacheRef = useRef({
+    posts: null,
+    timestamp: null,
+    CACHE_DURATION: 5 * 60 * 1000 // 5 minutes
+  });
 
   // Load posts on component mount
   useEffect(() => {
     loadPosts();
   }, []);
 
-  const loadPosts = async () => {
+  const loadPosts = async (forceRefresh = false) => {
     try {
+      // Check cache first
+      const now = Date.now();
+      const cache = cacheRef.current;
+      
+      if (!forceRefresh && cache.posts && cache.timestamp && 
+          (now - cache.timestamp) < cache.CACHE_DURATION) {
+        setPosts(cache.posts);
+        setLoading(false);
+        return;
+      }
+
       setLoading(true);
       setError(null);
       const fetchedPosts = await postService.getAllPosts();
+      
+      // Update cache
+      cache.posts = fetchedPosts;
+      cache.timestamp = now;
+      
       setPosts(fetchedPosts);
     } catch (err) {
       setError(err.message);
@@ -33,6 +54,14 @@ export function PostsProvider({ children }) {
       setError(null);
       const newPost = await postService.createPost(postData);
       setPosts(prev => [newPost, ...prev]);
+      
+      // Update cache
+      const cache = cacheRef.current;
+      if (cache.posts) {
+        cache.posts = [newPost, ...cache.posts];
+        cache.timestamp = Date.now();
+      }
+      
       return newPost;
     } catch (err) {
       setError(err.message);
@@ -58,6 +87,16 @@ export function PostsProvider({ children }) {
       setPosts(prev => prev.map(post => 
         post.id === id ? updatedPost : post
       ));
+      
+      // Update cache
+      const cache = cacheRef.current;
+      if (cache.posts) {
+        cache.posts = cache.posts.map(post => 
+          post.id === id ? updatedPost : post
+        );
+        cache.timestamp = Date.now();
+      }
+      
       return updatedPost;
     } catch (err) {
       setError(err.message);
@@ -72,6 +111,13 @@ export function PostsProvider({ children }) {
       setError(null);
       await postService.deletePost(id);
       setPosts(prev => prev.filter(post => post.id !== id));
+      
+      // Update cache
+      const cache = cacheRef.current;
+      if (cache.posts) {
+        cache.posts = cache.posts.filter(post => post.id !== id);
+        cache.timestamp = Date.now();
+      }
     } catch (err) {
       setError(err.message);
       console.error('Error deleting post:', err);
