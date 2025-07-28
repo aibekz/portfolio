@@ -13,7 +13,7 @@ export default function About() {
         description={aboutDescription}
         url={`${siteConfig.url}about`}
       />
-      <div className="px-6 py-20 max-w-4xl mx-auto">
+      <div className="px-6 py-8 max-w-4xl mx-auto">
         <div className="mb-8">
           <div style={{ height: '500px' }} className="rounded-lg bg-gradient-to-br from-slate-900 to-slate-800">
             <DigitalRain />
