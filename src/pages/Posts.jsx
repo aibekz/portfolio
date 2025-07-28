@@ -79,12 +79,6 @@ export default function Posts() {
               {posts.map((post) => (
                 <article key={post.id} className="border-b border-gray-200 pb-6 last:border-b-0">
                   <div className="flex flex-col gap-2">
-                    <time 
-                      dateTime={post.date}
-                      className="text-darktext font-mono text-sm block"
-                    >
-                      {formatDate(post.date)}
-                    </time>
                     <h2>
                       <Link 
                         to={`/posts/${post.slug}`}

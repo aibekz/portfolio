@@ -102,7 +102,7 @@ export default function PostDetail() {
         url={`${siteConfig.url}/posts/${slug}`}
       />
       <div className="flex-1 px-6 py-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
 
           {/* Post header */}
           <header className="mb-8">
@@ -118,7 +118,7 @@ export default function PostDetail() {
           </header>
 
           {/* Post content */}
-          <article className="prose prose-lg max-w-none">
+          <article className="prose prose-lg max-w-2xl">
             <MarkdownRenderer content={post.content} />
           </article>
 
