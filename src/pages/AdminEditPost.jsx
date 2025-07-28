@@ -28,10 +28,10 @@ export default function AdminEditPost() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-header font-mono font-semibold mb-4 text-gray-900">
+          <h1 className="text-header font-mono font-semibold mb-4 text-darktext">
             Post Not Found
           </h1>
-          <p className="text-body font-mono text-gray-600 mb-6">
+          <p className="text-body font-mono text-darktext mb-6">
             The post you're looking for doesn't exist.
           </p>
           <button
@@ -76,7 +76,7 @@ export default function AdminEditPost() {
             </button>
           </div>
 
-          <h1 className="text-header font-mono font-semibold mb-8 text-gray-900">
+          <h1 className="text-header font-mono font-semibold mb-8 text-darktext">
             Edit Post
           </h1>
           

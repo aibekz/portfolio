@@ -26,7 +26,7 @@ export default function Posts() {
         />
         <div className="flex-1 flex items-center justify-center px-6">
           <div className="text-center">
-            <p className="text-body font-mono text-gray-600">Loading posts...</p>
+            <p className="text-body font-mono text-darktext">Loading posts...</p>
           </div>
         </div>
       </>
@@ -65,13 +65,13 @@ export default function Posts() {
       />
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-header font-mono font-semibold mb-8 text-gray-900">
+          <h1 className="text-header font-mono font-semibold mb-8 text-darktext">
             Posts
           </h1>
           
           {posts.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-body font-mono text-gray-600">
+              <p className="text-body font-mono text-darktext">
                 No posts yet. Check back soon!
               </p>
             </div>
@@ -82,14 +82,14 @@ export default function Posts() {
                   <div className="flex flex-col gap-2">
                     <time 
                       dateTime={post.date}
-                      className="text-gray-600 font-mono text-sm block"
+                      className="text-darktext font-mono text-sm block"
                     >
                       {formatDate(post.date)}
                     </time>
                     <h2>
                       <Link 
                         to={`/posts/${post.slug}`}
-                        className="text-linkblue text-body font-mono hover:text-black hover:underline focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+                        className="text-linkblue text-body font-mono hover:text-darktext hover:underline focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
                       >
                         {post.title}
                       </Link>

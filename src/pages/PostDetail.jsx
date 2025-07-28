@@ -47,7 +47,7 @@ export default function PostDetail() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-body font-mono text-gray-600">Loading post...</p>
+          <p className="text-body font-mono text-darktext">Loading post...</p>
         </div>
       </div>
     );
@@ -57,7 +57,7 @@ export default function PostDetail() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-header font-mono font-semibold mb-4 text-gray-900">
+          <h1 className="text-header font-mono font-semibold mb-4 text-darktext">
             Error Loading Post
           </h1>
           <p className="text-body font-mono text-red-600 mb-6">
@@ -78,10 +78,10 @@ export default function PostDetail() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-header font-mono font-semibold mb-4 text-gray-900">
+          <h1 className="text-header font-mono font-semibold mb-4 text-darktext">
             Post Not Found
           </h1>
-          <p className="text-body font-mono text-gray-600 mb-6">
+          <p className="text-body font-mono text-darktext mb-6">
             The post you're looking for doesn't exist.
           </p>
           <button
@@ -107,12 +107,12 @@ export default function PostDetail() {
 
           {/* Post header */}
           <header className="mb-8">
-            <h1 className="text-header font-mono font-semibold mb-4 text-gray-900">
+            <h1 className="text-header font-mono font-semibold mb-4 text-darktext">
               {post.title}
             </h1>
             <time 
               dateTime={post.date}
-              className="text-gray-600 font-mono text-body"
+              className="text-darktext font-mono text-body"
             >
               {formatDate(post.date)}
             </time>
@@ -126,7 +126,7 @@ export default function PostDetail() {
           {/* Back button */}
           <button
             onClick={() => navigate('/posts')}
-            className="text-linkblue hover:underline font-mono text-body hover:text-black focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded mt-6"
+            className="text-linkblue hover:underline font-mono text-body hover:text-darktext focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded mt-6"
           >
             ← Back to Posts
           </button>

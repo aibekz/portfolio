@@ -39,7 +39,7 @@ export default function PostForm({ post, onSubmit, onCancel, isEditing = false }
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="title" className="block text-body font-mono font-semibold mb-2 text-gray-900">
+        <label htmlFor="title" className="block text-body font-mono font-semibold mb-2 text-darktext">
           Title
         </label>
         <input
@@ -56,7 +56,7 @@ export default function PostForm({ post, onSubmit, onCancel, isEditing = false }
 
       <div>
         <div className="flex justify-between items-center mb-2">
-          <label htmlFor="content" className="block text-body font-mono font-semibold text-gray-900">
+          <label htmlFor="content" className="block text-body font-mono font-semibold text-darktext">
             Content
           </label>
           <div className="flex gap-2">
@@ -66,7 +66,7 @@ export default function PostForm({ post, onSubmit, onCancel, isEditing = false }
               className={`px-3 py-1 text-sm font-mono rounded ${
                 !showPreview 
                   ? 'bg-linkblue text-white' 
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  : 'bg-gray-200 text-darktext hover:bg-gray-300'
               }`}
             >
               Write
@@ -77,7 +77,7 @@ export default function PostForm({ post, onSubmit, onCancel, isEditing = false }
               className={`px-3 py-1 text-sm font-mono rounded ${
                 showPreview 
                   ? 'bg-linkblue text-white' 
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  : 'bg-gray-200 text-darktext hover:bg-gray-300'
               }`}
             >
               Preview
@@ -115,13 +115,13 @@ console.log('Hello, world!');
 
 > Blockquote"
             />
-            <p className="text-sm text-gray-600 font-mono mt-2">
+            <p className="text-sm text-darktext font-mono mt-2">
               Supports Markdown formatting including headers, links, code blocks, lists, and more.
             </p>
           </div>
         ) : (
           <div className="border border-gray-300 rounded-md p-4 min-h-[400px] bg-white">
-            <div className="text-sm text-gray-600 font-mono mb-4 border-b border-gray-200 pb-2">
+            <div className="text-sm text-darktext font-mono mb-4 border-b border-gray-200 pb-2">
               Preview:
             </div>
             {formData.content.trim() ? (

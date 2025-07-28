@@ -52,17 +52,17 @@ export default function AdminSignup() {
       <div className="flex-1 flex items-center justify-center px-6">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <h1 className="text-header font-mono font-semibold text-gray-900 mb-2">
+            <h1 className="text-header font-mono font-semibold text-darktext mb-2">
               Create Admin Account
             </h1>
-            <p className="text-body font-mono text-gray-600">
+            <p className="text-body font-mono text-darktext">
               Create your admin account to manage the site
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="username" className="block text-body font-mono font-semibold mb-2 text-gray-900">
+              <label htmlFor="username" className="block text-body font-mono font-semibold mb-2 text-darktext">
                 Username
               </label>
               <input
@@ -80,7 +80,7 @@ export default function AdminSignup() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-body font-mono font-semibold mb-2 text-gray-900">
+              <label htmlFor="email" className="block text-body font-mono font-semibold mb-2 text-darktext">
                 Email
               </label>
               <input
@@ -96,7 +96,7 @@ export default function AdminSignup() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-body font-mono font-semibold mb-2 text-gray-900">
+              <label htmlFor="password" className="block text-body font-mono font-semibold mb-2 text-darktext">
                 Password
               </label>
               <input
@@ -132,7 +132,7 @@ export default function AdminSignup() {
             <div>
               <button
                 onClick={() => navigate('/')}
-                className="text-gray-600 underline font-mono text-body hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded"
+                className="text-darktext underline font-mono text-body hover:text-darktext focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded"
               >
                 Back to Home
               </button>

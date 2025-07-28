@@ -13,22 +13,22 @@ export default function MarkdownRenderer({ content, className = '' }) {
         components={{
           // Custom styling for markdown elements
           h1: ({ children }) => (
-            <h1 className="text-2xl font-mono font-bold mb-4 text-gray-900 border-b border-gray-200 pb-2">
+            <h1 className="text-2xl font-mono font-bold mb-4 text-darktext border-b border-gray-200 pb-2">
               {children}
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className="text-xl font-mono font-bold mb-3 text-gray-900 mt-6">
+            <h2 className="text-xl font-mono font-bold mb-3 text-darktext mt-6">
               {children}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className="text-lg font-mono font-bold mb-2 text-gray-900 mt-4">
+            <h3 className="text-lg font-mono font-bold mb-2 text-darktext mt-4">
               {children}
             </h3>
           ),
           p: ({ children }) => (
-            <p className="text-body font-mono leading-relaxed text-gray-800 mb-4">
+            <p className="text-body font-mono leading-relaxed text-darktext mb-4">
               {children}
             </p>
           ),
@@ -45,7 +45,7 @@ export default function MarkdownRenderer({ content, className = '' }) {
           code: ({ inline, className, children }) => {
             if (inline) {
               return (
-                <code className="bg-gray-100 text-gray-800 px-1 py-0.5 rounded text-sm font-mono">
+                <code className="bg-gray-100 text-darktext px-1 py-0.5 rounded text-sm font-mono">
                   {children}
                 </code>
               );
@@ -62,17 +62,17 @@ export default function MarkdownRenderer({ content, className = '' }) {
             </pre>
           ),
           blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-700 my-4 font-mono">
+            <blockquote className="border-l-4 border-gray-300 pl-4 italic text-darktext my-4 font-mono">
               {children}
             </blockquote>
           ),
           ul: ({ children }) => (
-            <ul className="list-disc list-inside mb-4 font-mono text-gray-800 space-y-1">
+            <ul className="list-disc list-inside mb-4 font-mono text-darktext space-y-1">
               {children}
             </ul>
           ),
           ol: ({ children }) => (
-            <ol className="list-decimal list-inside mb-4 font-mono text-gray-800 space-y-1">
+            <ol className="list-decimal list-inside mb-4 font-mono text-darktext space-y-1">
               {children}
             </ol>
           ),
@@ -102,12 +102,12 @@ export default function MarkdownRenderer({ content, className = '' }) {
             <hr className="border-gray-300 my-6" />
           ),
           strong: ({ children }) => (
-            <strong className="font-bold text-gray-900">
+            <strong className="font-bold text-darktext">
               {children}
             </strong>
           ),
           em: ({ children }) => (
-            <em className="italic text-gray-800">
+            <em className="italic text-darktext">
               {children}
             </em>
           ),

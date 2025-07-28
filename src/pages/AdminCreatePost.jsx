@@ -52,7 +52,7 @@ export default function AdminCreatePost() {
             </button>
           </div>
 
-          <h1 className="text-header font-mono font-semibold mb-8 text-gray-900">
+          <h1 className="text-header font-mono font-semibold mb-8 text-darktext">
             Create New Post
           </h1>
           

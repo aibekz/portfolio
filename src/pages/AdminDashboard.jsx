@@ -76,7 +76,7 @@ export default function AdminDashboard() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
-            <h1 className="text-header font-mono font-semibold text-gray-900 mb-4 sm:mb-0">
+            <h1 className="text-header font-mono font-semibold text-darktext mb-4 sm:mb-0">
               Admin Dashboard
             </h1>
             <div className="flex gap-3">
@@ -92,7 +92,7 @@ export default function AdminDashboard() {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-body font-mono font-semibold text-gray-900 mb-2">
+              <h3 className="text-body font-mono font-semibold text-darktext mb-2">
                 Total Posts
               </h3>
               <p className="text-2xl font-mono font-bold text-linkblue">
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
               </p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-body font-mono font-semibold text-gray-900 mb-2">
+              <h3 className="text-body font-mono font-semibold text-darktext mb-2">
                 Recent Posts
               </h3>
               <p className="text-2xl font-mono font-bold text-linkblue">
@@ -108,7 +108,7 @@ export default function AdminDashboard() {
               </p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-body font-mono font-semibold text-gray-900 mb-2">
+              <h3 className="text-body font-mono font-semibold text-darktext mb-2">
                 Quick Actions
               </h3>
               <Link 
@@ -123,14 +123,14 @@ export default function AdminDashboard() {
           {/* Posts Management */}
           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
-              <h2 className="text-body font-mono font-semibold text-gray-900">
+              <h2 className="text-body font-mono font-semibold text-darktext">
                 Manage Posts
               </h2>
             </div>
             
             {loading ? (
               <div className="px-6 py-12 text-center">
-                <p className="text-body font-mono text-gray-600">
+                <p className="text-body font-mono text-darktext">
                   Loading posts...
                 </p>
               </div>
@@ -145,7 +145,7 @@ export default function AdminDashboard() {
               </div>
             ) : posts.length === 0 ? (
               <div className="px-6 py-12 text-center">
-                <p className="text-body font-mono text-gray-600 mb-6">
+                <p className="text-body font-mono text-darktext mb-6">
                   No posts yet. Create your first post!
                 </p>
                 <Button to="/admin/posts/create" variant="primary">
@@ -158,10 +158,10 @@ export default function AdminDashboard() {
                   <div key={post.id} className="px-6 py-4">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                       <div className="flex-1">
-                        <h3 className="text-body font-mono font-semibold text-gray-900 mb-1">
+                        <h3 className="text-body font-mono font-semibold text-darktext mb-1">
                           {post.title}
                         </h3>
-                        <p className="text-sm font-mono text-gray-600">
+                        <p className="text-sm font-mono text-darktext">
                           {formatDate(post.date)}
                         </p>
                         <p className="text-sm font-mono text-gray-500 mt-1">
