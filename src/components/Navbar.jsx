@@ -28,7 +28,8 @@ const Navbar = () => {
                             <Link
                                 key={href}
                                 to={href}
-                                className="text-gray-700 hover:text-linkblue transition-colors duration-200 font-medium"
+                                className="hover:text-linkblue transition-colors duration-200 font-medium"
+                                style={{ color: '#111111' }}
                             >
                                 {label}
                             </Link>
@@ -43,9 +44,9 @@ const Navbar = () => {
                             aria-label="Toggle menu"
                         >
                             {menuOpen ? (
-                                <HiX className="w-6 h-6" />
+                                <HiX className="w-6 h-6" style={{ color: '#111111' }} />
                             ) : (
-                                <HiMenu className="w-6 h-6" />
+                                <HiMenu className="w-6 h-6" style={{ color: '#111111' }} />
                             )}
                         </button>
                     </div>
@@ -63,7 +64,7 @@ const Navbar = () => {
                                 className="focus:outline-none p-2"
                                 aria-label="Close menu"
                             >
-                                <HiX className="w-8 h-8" />
+                                <HiX className="w-8 h-8" style={{ color: '#111111' }} />
                             </button>
                         </div>
 
@@ -81,7 +82,8 @@ const Navbar = () => {
                                             key={href}
                                             to={href}
                                             onClick={() => setMenuOpen(false)}
-                                            className="block text-xl text-gray-700 hover:text-linkblue transition-colors duration-200 font-medium"
+                                            className="block text-xl hover:text-linkblue transition-colors duration-200 font-medium"
+                                            style={{ color: '#111111' }}
                                         >
                                             {label}
                                         </Link>
