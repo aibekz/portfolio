@@ -62,7 +62,7 @@ export default function Posts() {
         description="Blog posts and articles by Aibek Z."
         url={`${siteConfig.url}/posts`}
       />
-      <div className="flex-1 px-6 py-8">
+      <div className="flex-1 px-6 py-8 mt-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-header font-mono font-semibold mb-8 text-darktext">
             Posts

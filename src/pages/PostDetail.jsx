@@ -101,7 +101,7 @@ export default function PostDetail() {
         description={post.content.substring(0, 160) + '...'}
         url={`${siteConfig.url}/posts/${slug}`}
       />
-      <div className="flex-1 px-6 py-8">
+      <div className="flex-1 px-6 py-8 mt-8">
         <div className="max-w-3xl mx-auto">
 
           {/* Post header */}
