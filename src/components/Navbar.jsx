@@ -90,7 +90,7 @@ const Navbar = () => {
                         <div className="flex-1 flex flex-col items-center justify-center space-y-8">
                             <div className="text-center">
                                 <div className='mb-8'>
-                                    <Logo />
+                                    <Logo onLogoClick={() => setMenuOpen(false)} />
                                 </div>
                                 <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
                                     {renderSocialIcons('w-8 h-8 sm:w-10 sm:h-10')}
