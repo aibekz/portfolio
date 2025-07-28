@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
 import postRoutes from './routes/posts.js';
 import authRoutes from './routes/auth.js';
-import User from './models/User.js';
 
 dotenv.config();
 
@@ -25,6 +24,7 @@ if (!process.env.JWT_SECRET) {
   console.error('JWT_SECRET is not defined in environment variables');
   process.exit(1);
 }
+
 
 // Rate limiting configuration
 const authLimiter = rateLimit({
@@ -58,35 +58,14 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(generalLimiter);
 
-// Initialize admin user
-async function initializeAdmin() {
-  try {
-    const adminExists = await User.findOne({ username: 'admin' });
-    if (!adminExists) {
-      const adminUser = new User({
-        username: 'admin',
-        email: 'admin@aibekz.com',
-        password: process.env.ADMIN_PASSWORD || '12323Aiba@',
-        role: 'admin'
-      });
-      await adminUser.save();
-      console.log('Admin user created successfully');
-    } else {
-      console.log('Admin user already exists');
-    }
-  } catch (error) {
-    console.error('Error initializing admin user:', error);
-  }
-}
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(async () => {
+.then(() => {
   console.log('Connected to MongoDB');
-  await initializeAdmin();
 })
 .catch((error) => console.error('MongoDB connection error:', error));
 
