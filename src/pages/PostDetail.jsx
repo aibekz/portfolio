@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { usePosts } from '../contexts/PostsContext';
 import SEO from '../components/SEO';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 import { siteConfig } from '../constants/siteConfig';
 
 // Format date to be more readable
@@ -74,9 +75,7 @@ export default function PostDetail() {
 
           {/* Post content */}
           <article className="prose prose-lg max-w-none">
-            <div className="text-body font-mono leading-relaxed text-gray-800 whitespace-pre-wrap">
-              {post.content}
-            </div>
+            <MarkdownRenderer content={post.content} />
           </article>
         </div>
       </div>
