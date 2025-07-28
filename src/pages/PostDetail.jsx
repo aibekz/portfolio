@@ -104,13 +104,6 @@ export default function PostDetail() {
       />
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto">
-          {/* Back button */}
-          <button
-            onClick={() => navigate('/posts')}
-            className="text-linkblue underline font-mono text-body hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded mb-6"
-          >
-            ← Back to Posts
-          </button>
 
           {/* Post header */}
           <header className="mb-8">
@@ -129,6 +122,14 @@ export default function PostDetail() {
           <article className="prose prose-lg max-w-none">
             <MarkdownRenderer content={post.content} />
           </article>
+
+          {/* Back button */}
+          <button
+            onClick={() => navigate('/posts')}
+            className="text-linkblue hover:underline font-mono text-body hover:text-black focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded mt-6"
+          >
+            ← Back to Posts
+          </button>
         </div>
       </div>
     </>
