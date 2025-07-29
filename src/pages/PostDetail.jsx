@@ -105,16 +105,16 @@ export default function PostDetail() {
         <div className="max-w-3xl mx-auto">
 
           {/* Post header */}
-          <header className="mb-8">
-            <h1 className="text-header font-mono font-semibold mb-4 text-darktext">
-              {post.title}
-            </h1>
+          <header className="mb-10">
             <time 
               dateTime={post.date}
-              className="text-darktext font-mono text-body"
+              className="text-sm font-mono text-gray-700 font-medium block mb-3"
             >
               {formatDate(post.date)}
             </time>
+            <h1 className="text-header font-mono font-semibold text-darktext leading-tight">
+              {post.title}
+            </h1>
           </header>
 
           {/* Post content */}
@@ -125,7 +125,7 @@ export default function PostDetail() {
           {/* Back button */}
           <button
             onClick={() => navigate('/posts')}
-            className="text-linkblue hover:underline font-mono text-body hover:text-darktext focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded mt-6"
+            className="text-linkblue hover:underline font-mono text-body hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded mt-8 transition-colors duration-200"
           >
             ← Back to Posts
           </button>
