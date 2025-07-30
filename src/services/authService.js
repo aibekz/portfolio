@@ -2,7 +2,6 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001
 
 class AuthService {
   constructor() {
-    this.token = null;
     this.isRefreshing = false;
     this.authListeners = [];
   }
@@ -28,13 +27,6 @@ class AuthService {
     });
   }
 
-  getStoredToken() {
-    if (!this.token) {
-      this.token = localStorage.getItem('admin_token');
-    }
-    return this.token;
-  }
-
   async signup(username, email, password) {
     try {
       const response = await fetch(`${API_BASE_URL}/auth/signup`, {
@@ -42,6 +34,7 @@ class AuthService {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', // Include HttpOnly cookies
         body: JSON.stringify({ username, email, password }),
       });
 
@@ -51,9 +44,9 @@ class AuthService {
         throw new Error(data.error || 'Signup failed');
       }
 
-      this.token = data.token;
-      localStorage.setItem('admin_token', data.token);
-      return { success: true, token: data.token, user: data.user };
+      // With HttpOnly cookies, no token handling needed on frontend
+      this.notifyAuthChange(true);
+      return { success: true, user: data.user };
 
     } catch (error) {
       console.error('Signup error:', error);
@@ -68,6 +61,7 @@ class AuthService {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', // Include HttpOnly cookies
         body: JSON.stringify({ username, password }),
       });
 
@@ -77,9 +71,9 @@ class AuthService {
         throw new Error(data.error || 'Login failed');
       }
 
-      this.token = data.token;
-      localStorage.setItem('admin_token', data.token);
-      return { success: true, token: data.token, user: data.user };
+      // With HttpOnly cookies, no token handling needed on frontend
+      this.notifyAuthChange(true);
+      return { success: true, user: data.user };
 
     } catch (error) {
       console.error('Login error:', error);
@@ -88,18 +82,13 @@ class AuthService {
   }
 
   async verifyToken() {
-    const token = this.getStoredToken();
-    if (!token) {
-      return { valid: false };
-    }
-
     try {
       const response = await fetch(`${API_BASE_URL}/auth/verify`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
+        credentials: 'include', // Include HttpOnly cookies
       });
 
       const data = await response.json();
@@ -107,7 +96,7 @@ class AuthService {
       if (!response.ok) {
         // Only logout if it's an authentication error (401/403)
         if (response.status === 401 || response.status === 403) {
-          this.logout();
+          this.notifyAuthChange(false);
         }
         return { valid: false };
       }
@@ -117,51 +106,60 @@ class AuthService {
     } catch (error) {
       console.error('Token verification error:', error);
       // Don't logout on network errors - let the context handle it
-      // Only logout if it's a clear authentication failure
       return { valid: false, networkError: true };
     }
   }
 
-  logout() {
-    this.token = null;
-    localStorage.removeItem('admin_token');
-    this.notifyAuthChange(false);
+  async logout() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Include HttpOnly cookies
+      });
+
+      // Always notify logout regardless of response
+      this.notifyAuthChange(false);
+
+      if (!response.ok) {
+        console.warn('Logout request failed, but cleared local state');
+      }
+
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Still notify logout to clear local state
+      this.notifyAuthChange(false);
+    }
   }
 
-  getToken() {
-    return this.getStoredToken();
+  // With HttpOnly cookies, we can't check authentication status locally
+  // We need to verify with the server
+  async isAuthenticated() {
+    try {
+      const result = await this.verifyToken();
+      return result.valid;
+    } catch (error) {
+      return false;
+    }
   }
 
-  isAuthenticated() {
-    return !!this.getStoredToken();
-  }
-
-  getAuthHeaders() {
-    const token = this.getStoredToken();
-    return token ? {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    } : {
-      'Content-Type': 'application/json',
-    };
-  }
-
-  // Helper method to make authenticated API requests with error handling
+  // Helper method to make authenticated API requests
   async makeAuthenticatedRequest(url, options = {}) {
-    const headers = this.getAuthHeaders();
-    
     try {
       const response = await fetch(url, {
         ...options,
+        credentials: 'include', // Always include cookies
         headers: {
-          ...headers,
+          'Content-Type': 'application/json',
           ...options.headers,
         },
       });
 
-      // If we get a 401/403, the token is invalid
+      // If we get a 401/403, the user is not authenticated
       if (response.status === 401 || response.status === 403) {
-        this.logout();
+        this.notifyAuthChange(false);
         throw new Error('Authentication failed');
       }
 
@@ -174,7 +172,7 @@ class AuthService {
 
   // Method to check if we should attempt to refresh auth state
   shouldRefreshAuth() {
-    return this.isAuthenticated() && !this.isRefreshing;
+    return !this.isRefreshing;
   }
 }
 

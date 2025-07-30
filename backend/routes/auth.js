@@ -48,9 +48,18 @@ router.post('/login', async (req, res) => {
       { expiresIn: '24h' }
     );
 
+    // Set HttpOnly cookie with security flags
+    res.cookie('auth_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      path: '/'
+    });
+
+    // Don't send token in response body for security
     res.json({
       success: true,
-      token,
       user: {
         id: user._id,
         username: user.username,
@@ -66,11 +75,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// POST /api/auth/verify - Verify token
+// POST /api/auth/verify - Verify token from HttpOnly cookie
 router.post('/verify', (req, res) => {
   try {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+    const token = req.cookies.auth_token;
 
     if (!token) {
       return res.status(401).json({ error: 'No token provided' });
@@ -89,6 +97,28 @@ router.post('/verify', (req, res) => {
 
   } catch (error) {
     console.error('Token verification error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// POST /api/auth/logout - Clear HttpOnly cookie
+router.post('/logout', (req, res) => {
+  try {
+    // Clear the HttpOnly cookie
+    res.clearCookie('auth_token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: '/'
+    });
+
+    res.json({
+      success: true,
+      message: 'Logged out successfully'
+    });
+
+  } catch (error) {
+    console.error('Logout error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

@@ -8,6 +8,7 @@ export const postService = {
     try {
       const response = await authService.makeAuthenticatedRequest(`${API_BASE_URL}/posts`, {
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify(postData),
       });
 
@@ -104,6 +105,7 @@ export const postService = {
     try {
       const response = await authService.makeAuthenticatedRequest(`${API_BASE_URL}/posts/${id}`, {
         method: 'PUT',
+        credentials: 'include',
         body: JSON.stringify(updateData),
       });
 
@@ -124,6 +126,7 @@ export const postService = {
     try {
       const response = await authService.makeAuthenticatedRequest(`${API_BASE_URL}/posts/${id}`, {
         method: 'DELETE',
+        credentials: 'include',
       });
 
       if (!response.ok) {

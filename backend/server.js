@@ -1,10 +1,11 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import rateLimit from 'express-rate-limit';
-import postRoutes from './routes/posts.js';
 import authRoutes from './routes/auth.js';
+import postRoutes from './routes/posts.js';
 
 dotenv.config();
 
@@ -54,6 +55,7 @@ const corsOptions = {
 
 // Middleware
 app.use(cors(corsOptions));
+app.use(cookieParser()); // Enable cookie parsing for HttpOnly cookies
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(generalLimiter);

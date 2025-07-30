@@ -8,33 +8,14 @@ export function AdminProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is already authenticated on app load
+    // With HttpOnly cookies, we need to verify authentication with the server
     const checkAuth = async () => {
-      // First check if we have a token in localStorage
-      const hasToken = authService.isAuthenticated();
-      
-      if (!hasToken) {
-        setIsAuthenticated(false);
-        setIsLoading(false);
-        return;
-      }
-
-      // If we have a token, assume user is authenticated initially
-      // This prevents logout on page refresh if there are network issues
-      setIsAuthenticated(true);
-      
       try {
-        // Try to verify the token with the server
         const result = await authService.verifyToken();
-        
-        if (!result.valid) {
-          // Only log out if the server explicitly says the token is invalid
-          setIsAuthenticated(false);
-        }
+        setIsAuthenticated(result.valid);
       } catch (error) {
-        // On network errors, keep the user logged in
-        // The token will be verified on the next API call
-        console.warn('Token verification failed due to network error:', error);
+        console.warn('Token verification failed:', error);
+        setIsAuthenticated(false);
       } finally {
         setIsLoading(false);
       }
