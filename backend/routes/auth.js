@@ -52,9 +52,10 @@ router.post('/login', async (req, res) => {
     res.cookie('auth_token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
-      path: '/'
+      path: '/',
+      domain: process.env.NODE_ENV === 'production' ? undefined : undefined
     });
 
     // Don't send token in response body for security
@@ -108,7 +109,7 @@ router.post('/logout', (req, res) => {
     res.clearCookie('auth_token', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
       path: '/'
     });
 
