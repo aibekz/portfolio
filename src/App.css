@@ -48,3 +48,90 @@ body {
 .font-mono {
   font-family: 'IBM Plex Mono', monospace;
 }
+
+/* Navigation link styles */
+.nav-link {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+/* Dark mode navigation link styles */
+:root.dark .nav-link {
+  color: var(--color-matrix-green);
+}
+
+:root.dark .nav-link:hover {
+  color: var(--color-matrix-green);
+  text-decoration: underline;
+}
+
+/* Theme-responsive utility classes */
+.text-theme {
+  color: var(--text-color);
+}
+
+.text-theme-muted {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.bg-theme {
+  background-color: var(--bg-color);
+}
+
+.bg-hover {
+  background-color: var(--hover-bg);
+}
+
+.border-theme {
+  border-color: var(--border-color);
+}
+
+.text-link {
+  color: var(--link-color);
+}
+
+/* Form input styling */
+.input-theme {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.input-theme:focus {
+  ring-color: var(--link-color);
+}
+
+/* Icon colors */
+.icon-theme {
+  color: var(--text-color);
+}
+
+/* Dark mode specific icon colors */
+:root.dark .icon-light {
+  color: var(--color-fg-light);
+}
+
+:root .icon-dark {
+  color: var(--color-darktext);
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover-bg);
+}
+
+.theme-toggle:focus {
+  ring-color: var(--link-color);
+}

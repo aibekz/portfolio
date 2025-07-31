@@ -31,10 +31,7 @@ const Contact = () => {
                 <h2 className="text-header font-semibold mb-2 font-mono" style={{ color: 'var(--text-color)' }}>Email</h2>
                 <Link 
                   to={`mailto:${siteConfig.email}`}
-                  className="font-mono text-body underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded transition-colors duration-200"
-                  style={{ color: 'var(--link-color)' }}
-                  onMouseEnter={(e) => e.target.style.opacity = '0.8'}
-                  onMouseLeave={(e) => e.target.style.opacity = '1'}
+                  className="font-mono text-body nav-link underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
                 >
                   {formatEmail(siteConfig.email)}
                 </Link>

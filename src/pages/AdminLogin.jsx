@@ -116,10 +116,7 @@ export default function AdminLogin() {
           <div className="mt-6 text-center">
             <button
               onClick={() => navigate('/')}
-              className="underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded transition-colors duration-200"
-              style={{ color: 'var(--link-color)' }}
-              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
-              onMouseLeave={(e) => e.target.style.opacity = '1'}
+              className="nav-link underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
             >
               Back to Home
             </button>

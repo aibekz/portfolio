@@ -47,11 +47,8 @@ export default function About() {
               <p className="text-body leading-relaxed mb-6 font-mono" style={{ color: 'var(--text-color)' }}>
                 Aibek also writes tech-related <Link 
                   to="/posts" 
-                  className='underline transition-colors duration-200'
-                  style={{ color: 'var(--link-color)' }}
-                  onMouseEnter={(e) => e.target.style.opacity = '0.8'}
-                  onMouseLeave={(e) => e.target.style.opacity = '1'}
-                >posts</Link> sharing insights, 
+                  className='nav-link underline'
+                >posts</Link> sharing insights,
                 tutorials, and thoughts on software development, emerging technologies, and industry trends.
               </p>
             </div>

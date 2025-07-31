@@ -7,22 +7,14 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2"
-      style={{
-        backgroundColor: 'transparent',
-        ':hover': { backgroundColor: 'var(--hover-bg)' },
-        ':focus': { 
-          ringColor: isDarkMode ? 'var(--color-matrix-green)' : 'var(--color-linkblue)'
-        }
-      }}
-      onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--hover-bg)'}
-      onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+      className="theme-toggle p-2 rounded-lg focus:outline-none focus:ring-2"
       aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {isDarkMode ? (
-        <HiSun className="w-5 h-5" style={{ color: 'var(--color-fg-light)' }} />
+        <HiSun className="w-5 h-5 icon-theme" />
       ) : (
-        <HiMoon className="w-5 h-5" style={{ color: 'var(--color-darktext)' }} />
+        <HiMoon className="w-5 h-5 icon-theme" />
       )}
     </button>
   );

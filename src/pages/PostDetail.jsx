@@ -46,7 +46,7 @@ export default function PostDetail() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-body font-mono text-darktext">Loading post...</p>
+          <p className="text-body font-mono text-theme">Loading post...</p>
         </div>
       </div>
     );
@@ -56,7 +56,7 @@ export default function PostDetail() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-header font-mono font-semibold mb-4 text-darktext">
+          <h1 className="text-header font-mono font-semibold mb-4 text-theme">
             Error Loading Post
           </h1>
           <p className="text-body font-mono text-red-600 mb-6">
@@ -64,7 +64,7 @@ export default function PostDetail() {
           </p>
           <button
             onClick={() => navigate('/posts')}
-            className="text-linkblue underline font-mono text-body hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+            className="nav-link underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
           >
             Back to Posts
           </button>
@@ -77,15 +77,15 @@ export default function PostDetail() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-header font-mono font-semibold mb-4 text-darktext">
+          <h1 className="text-header font-mono font-semibold mb-4 text-theme">
             Post Not Found
           </h1>
-          <p className="text-body font-mono text-darktext mb-6">
+          <p className="text-body font-mono text-theme mb-6">
             The post you're looking for doesn't exist.
           </p>
           <button
             onClick={() => navigate('/posts')}
-            className="text-linkblue underline font-mono text-body hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+            className="nav-link underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
           >
             Back to Posts
           </button>
@@ -108,11 +108,11 @@ export default function PostDetail() {
           <header className="mb-10">
             <time 
               dateTime={post.date}
-              className="text-sm font-mono text-gray-700 font-medium block mb-3"
+              className="text-sm font-mono text-theme-muted font-medium block mb-3"
             >
               {formatDate(post.date)}
             </time>
-            <h1 className="text-header font-mono font-semibold text-darktext leading-tight">
+            <h1 className="text-header font-mono font-semibold text-theme leading-tight">
               {post.title}
             </h1>
           </header>
@@ -125,7 +125,7 @@ export default function PostDetail() {
           {/* Back button */}
           <button
             onClick={() => navigate('/posts')}
-            className="text-linkblue hover:underline font-mono text-body hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded mt-8 transition-colors duration-200"
+            className="nav-link font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded mt-8"
           >
             ← Back to Posts
           </button>

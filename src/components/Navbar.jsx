@@ -28,13 +28,7 @@ const Navbar = () => {
                             <Link
                                 key={href}
                                 to={href}
-                                className="font-medium transition-colors duration-200"
-                                style={{ 
-                                    color: 'var(--text-color)',
-                                    ':hover': { color: 'var(--link-color)' }
-                                }}
-                                onMouseEnter={(e) => e.target.style.color = 'var(--link-color)'}
-                                onMouseLeave={(e) => e.target.style.color = 'var(--text-color)'}
+                                className="font-medium nav-link"
                             >
                                 {label}
                             </Link>
@@ -89,12 +83,7 @@ const Navbar = () => {
                                             key={href}
                                             to={href}
                                             onClick={() => setMenuOpen(false)}
-                                            className="block text-xl font-medium transition-colors duration-200"
-                                            style={{ 
-                                                color: 'var(--text-color)'
-                                            }}
-                                            onMouseEnter={(e) => e.target.style.color = 'var(--link-color)'}
-                                            onMouseLeave={(e) => e.target.style.color = 'var(--text-color)'}
+                                            className="block text-xl font-medium nav-link"
                                         >
                                             {label}
                                         </Link>

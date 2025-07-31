@@ -16,12 +16,7 @@ export default function Home() {
             {siteConfig.author.greeting}
             <Link 
               to="/about" 
-              className="ml-1 hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded transition-colors duration-200"
-              style={{ 
-                color: 'var(--link-color)'
-              }}
-              onMouseEnter={(e) => e.target.style.color = 'var(--text-color)'}
-              onMouseLeave={(e) => e.target.style.color = 'var(--link-color)'}
+              className="ml-1 nav-link focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
               aria-label={`Learn more about ${siteConfig.author.name}`}
             >
               {siteConfig.author.name}

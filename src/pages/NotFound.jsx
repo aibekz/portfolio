@@ -23,10 +23,7 @@ export default function NotFound() {
                     <div className="flex flex-col sm:flex-row gap-4">
                         <Link 
                             to="/"
-                            className="underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded text-lg font-medium transition-colors duration-200"
-                            style={{ color: 'var(--link-color)' }}
-                            onMouseEnter={(e) => e.target.style.opacity = '0.8'}
-                            onMouseLeave={(e) => e.target.style.opacity = '1'}
+                            className="nav-link underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded text-lg font-medium"
                             aria-label="Go back to home page"
                         >
                             Back to Home &rarr;
