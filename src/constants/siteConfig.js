@@ -5,10 +5,10 @@ export const siteConfig = {
   url: "https://aibekz.com/",
   email: "aibek.zhumabekov@proton.me",
   author: {
-    logo: "<Aibek Z/>",
+    logo: "Aibek Z.",
     name: "Aibek Z.",
-    title: "A Developer.",
+    title: "Software Engineer",
     greeting: "Hi.I'm ",
-    subtitle: "I'm passionate about building meaningful, engaging, accessible, and user-centric software."
+    subtitle: "I'm passionate about building experiences that are impactful, accessible, and user-centric.",
   }
 };
