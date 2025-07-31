@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenGraph Image Template</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .og-container {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            box-sizing: border-box;
+        }
+        
+        .grid-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+        }
+        
+        .content {
+            z-index: 2;
+            color: white;
+            max-width: 800px;
+        }
+        
+        .logo {
+            font-size: 72px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        
+        .subtitle {
+            font-size: 28px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .description {
+            font-size: 20px;
+            color: #64748b;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+        
+        .tech-stack {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .tech-tag:nth-child(2) { background: rgba(16, 185, 129, 0.8); }
+        .tech-tag:nth-child(3) { background: rgba(139, 92, 246, 0.8); }
+        .tech-tag:nth-child(4) { background: rgba(6, 182, 212, 0.8); }
+        .tech-tag:nth-child(5) { background: rgba(245, 101, 101, 0.8); }
+    </style>
+</head>
+<body>
+    <div class="og-container">
+        <div class="grid-pattern"></div>
+        <div class="content">
+            <div class="logo">AZ</div>
+            <h1 class="title">Aibek Zhumabekov</h1>
+            <p class="subtitle">Full-Stack Developer</p>
+            <p class="description">Building meaningful web applications with modern technologies</p>
+            <div class="tech-stack">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">AWS</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Instructions for generating the image
+        console.log(`
+To generate the OpenGraph image:
+1. Open this HTML file in a browser
+2. Take a screenshot of the 1200x630 container
+3. Save it as 'og-image.png' in the public folder
+4. Or use a tool like Puppeteer to automate this process
+
+Alternative: Use online tools like:
+- https://www.bannerbear.com/
+- https://placid.app/
+- https://htmlcsstoimage.com/
+        `);
+    </script>
+</body>
+</html>

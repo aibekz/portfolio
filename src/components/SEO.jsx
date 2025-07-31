@@ -5,7 +5,7 @@ const SEO = ({
   title, 
   description = siteConfig.description, 
   url = siteConfig.url,
-  image,
+  image = siteConfig.ogImage,
   type = 'website'
 }) => {
   const fullTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.title;
