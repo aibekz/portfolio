@@ -2,8 +2,6 @@
 @import "tailwindcss";
 
 @theme {
-  --color-linkblue: #0000EE;
-  --color-darktext: #111111;
   --color-bg-dark: #111213;
   --color-fg-light: #d6d6d6;
   --color-matrix-green: #39FF14;
@@ -11,28 +9,16 @@
   --font-size-body: 18px;
 }
 
-/* Root variables for light and dark themes */
-:root {
-  --bg-color: #ffffff;
-  --text-color: var(--color-darktext);
-  --link-color: var(--color-linkblue);
-  --border-color: #e5e7eb;
-  --hover-bg: #f3f4f6;
-}
-
-:root.dark {
-  --bg-color: var(--color-bg-dark);
-  --text-color: var(--color-fg-light);
-  --link-color: var(--color-matrix-green);
-  --border-color: #374151;
-  --hover-bg: #1f2937;
-}
-
-/* Base styles */
+/* Base styles - always dark mode */
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: #111213;
+  color: #d6d6d6;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure dark background */
+html {
+  background-color: #111213;
 }
 
 /* Custom utility classes */
@@ -49,91 +35,66 @@ body {
   font-family: 'IBM Plex Mono', monospace;
 }
 
+/* Color utility classes */
+.text-primary {
+  color: #d6d6d6;
+}
+
+.text-accent {
+  color: #39FF14;
+}
+
+.focus\:ring-accent:focus {
+  --tw-ring-color: #39FF14;
+}
+
+.border-accent {
+  border-color: #39FF14;
+}
+
+.text-muted {
+  color: #d6d6d6;
+  opacity: 0.7;
+}
+
+.bg-primary {
+  background-color: #111213;
+}
+
+.bg-secondary {
+  background-color: #1f2937;
+}
+
+.border-primary {
+  border-color: #374151;
+}
+
 /* Navigation link styles */
 .nav-link {
-  color: var(--link-color);
+  color: #39FF14;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-  color: var(--link-color);
+  color: #39FF14;
   text-decoration: underline;
-}
-
-/* Dark mode navigation link styles */
-:root.dark .nav-link {
-  color: var(--color-matrix-green);
-}
-
-:root.dark .nav-link:hover {
-  color: var(--color-matrix-green);
-  text-decoration: underline;
-}
-
-/* Theme-responsive utility classes */
-.text-theme {
-  color: var(--text-color);
-}
-
-.text-theme-muted {
-  color: var(--text-color);
-  opacity: 0.7;
-}
-
-.bg-theme {
-  background-color: var(--bg-color);
-}
-
-.bg-hover {
-  background-color: var(--hover-bg);
-}
-
-.border-theme {
-  border-color: var(--border-color);
-}
-
-.text-link {
-  color: var(--link-color);
 }
 
 /* Form input styling */
-.input-theme {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
+.input-primary {
+  background-color: #111213;
+  color: #d6d6d6;
+  border: 1px solid #374151;
 }
 
-.input-theme:focus {
-  ring-color: var(--link-color);
+.input-primary:focus {
+  ring-color: #39FF14;
 }
 
 /* Icon colors */
-.icon-theme {
-  color: var(--text-color);
-}
-
-/* Dark mode specific icon colors */
-:root.dark .icon-light {
-  color: var(--color-fg-light);
-}
-
-:root .icon-dark {
-  color: var(--color-darktext);
-}
-
-/* Theme toggle button styling */
-.theme-toggle {
-  background-color: transparent;
-  transition: background-color 0.2s ease;
-}
-
-.theme-toggle:hover {
-  background-color: var(--hover-bg);
-}
-
-.theme-toggle:focus {
-  ring-color: var(--link-color);
+.icon-primary {
+  color: #d6d6d6;
 }
 
 /* Typewriter animation styles */
@@ -144,10 +105,11 @@ body {
 .typewriter-wrapper {
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 600;
+  color: #d6d6d6;
 }
 
 .typewriter-cursor {
-  color: var(--text-color);
+  color: #39FF14;
   font-weight: 100;
   animation: blink 1s infinite;
 }
@@ -155,11 +117,6 @@ body {
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
-}
-
-/* Dark mode typewriter cursor */
-:root.dark .typewriter-cursor {
-  color: var(--color-matrix-green);
 }
 
 /* Fade-in animation for content after typewriter */
@@ -178,20 +135,37 @@ body {
   }
 }
 
-/* Dynamic Logo Styles */
-.dynamic-logo {
-  transition: all 0.3s ease;
+/* Markdown content styling */
+.markdown-h1 {
+  color: #d6d6d6;
+  border-bottom: 1px solid #374151;
 }
 
-.logo-bg {
-  fill: var(--bg-color);
+.markdown-h2 {
+  color: #d6d6d6;
 }
 
-.logo-text {
-  fill: var(--text-color);
+.markdown-h3 {
+  color: #d6d6d6;
 }
 
-/* Dark mode specific logo colors */
-:root.dark .logo-text {
-  fill: var(--color-matrix-green);
+.markdown-p {
+  color: #d6d6d6;
+}
+
+.markdown-blockquote {
+  border-color: #374151;
+  color: #d6d6d6;
+}
+
+.markdown-list {
+  color: #d6d6d6;
+}
+
+.markdown-strong {
+  color: #d6d6d6;
+}
+
+.markdown-em {
+  color: #d6d6d6;
 }

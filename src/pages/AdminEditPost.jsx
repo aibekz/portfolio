@@ -28,15 +28,15 @@ export default function AdminEditPost() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-header font-mono font-semibold mb-4 text-darktext">
+          <h1 className="text-header font-mono font-semibold mb-4 text-primary">
             Post Not Found
           </h1>
-          <p className="text-body font-mono text-darktext mb-6">
+          <p className="text-body font-mono text-primary mb-6">
             The post you're looking for doesn't exist.
           </p>
           <button
             onClick={() => navigate('/admin')}
-            className="text-linkblue underline font-mono text-body hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+            className="nav-link underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded"
           >
             Back to Admin Dashboard
           </button>
@@ -70,13 +70,13 @@ export default function AdminEditPost() {
           <div className="mb-6">
             <button
               onClick={() => navigate('/admin')}
-              className="text-linkblue underline font-mono text-body hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+              className="nav-link underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded"
             >
               ← Back to Admin Dashboard
             </button>
           </div>
 
-          <h1 className="text-header font-mono font-semibold mb-8 text-darktext">
+          <h1 className="text-header font-mono font-semibold mb-8 text-primary">
             Edit Post
           </h1>
           

@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
-import useDynamicFavicon from '../../hooks/useDynamicFavicon';
 
 const Layout = ({ children }) => {
-  useDynamicFavicon();
+  useEffect(() => {
+    // Always ensure dark mode is applied
+    document.documentElement.classList.add('dark');
+    // Clean up any theme preferences
+    localStorage.removeItem('theme');
+  }, []);
   
   return (
     <div className="min-h-screen flex flex-col font-sans">

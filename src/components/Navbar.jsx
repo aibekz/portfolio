@@ -2,7 +2,6 @@ import { HiMenu, HiX } from 'react-icons/hi';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
-import ThemeToggle from './ThemeToggle.jsx';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -15,14 +14,14 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 transition-colors duration-300" style={{ backgroundColor: 'var(--bg-color)' }}>
+            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 transition-colors duration-300 bg-primary">
                 <div className="flex items-center justify-between">
                     {/* Logo always on left */}
                     <div>
                         <Logo />
                     </div>
 
-                    {/* Desktop: Navigation links and theme toggle on right */}
+                    {/* Desktop: Navigation links on right */}
                     <div className="hidden md:flex space-x-6 items-center">
                         {navigationLinks.map(({ href, label }) => (
                             <Link
@@ -33,21 +32,19 @@ const Navbar = () => {
                                 {label}
                             </Link>
                         ))}
-                        <ThemeToggle />
                     </div>
 
-                    {/* Mobile: Menu button and theme toggle on right */}
-                    <div className="md:hidden flex items-center space-x-2">
-                        <ThemeToggle />
+                    {/* Mobile: Menu button on right */}
+                    <div className="md:hidden flex items-center">
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
                             className="focus:outline-none p-2"
                             aria-label="Toggle menu"
                         >
                             {menuOpen ? (
-                                <HiX className="w-6 h-6" style={{ color: 'var(--text-color)' }} />
+                                <HiX className="w-6 h-6 icon-primary" />
                             ) : (
-                                <HiMenu className="w-6 h-6" style={{ color: 'var(--text-color)' }} />
+                                <HiMenu className="w-6 h-6 icon-primary" />
                             )}
                         </button>
                     </div>
@@ -56,17 +53,16 @@ const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             {menuOpen && (
-                <div className="fixed inset-0 z-50 md:hidden transition-colors duration-300" style={{ backgroundColor: 'var(--bg-color)' }}>
+                <div className="fixed inset-0 z-50 md:hidden transition-colors duration-300 bg-primary">
                     <div className="flex flex-col h-full">
-                        {/* Close button and theme toggle */}
-                        <div className="flex justify-end items-center space-x-2 p-6">
-                            <ThemeToggle />
+                        {/* Close button */}
+                        <div className="flex justify-end items-center p-6">
                             <button
                                 onClick={() => setMenuOpen(false)}
                                 className="focus:outline-none p-2"
                                 aria-label="Close menu"
                             >
-                                <HiX className="w-8 h-8" style={{ color: 'var(--text-color)' }} />
+                                <HiX className="w-8 h-8 icon-primary" />
                             </button>
                         </div>
 

@@ -46,7 +46,7 @@ export default function PostDetail() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-body font-mono text-theme">Loading post...</p>
+          <p className="text-body font-mono text-primary">Loading post...</p>
         </div>
       </div>
     );
@@ -56,7 +56,7 @@ export default function PostDetail() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-header font-mono font-semibold mb-4 text-theme">
+          <h1 className="text-header font-mono font-semibold mb-4 text-primary">
             Error Loading Post
           </h1>
           <p className="text-body font-mono text-red-600 mb-6">
@@ -77,10 +77,10 @@ export default function PostDetail() {
     return (
       <div className="flex-1 px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-header font-mono font-semibold mb-4 text-theme">
+          <h1 className="text-header font-mono font-semibold mb-4 text-primary">
             Post Not Found
           </h1>
-          <p className="text-body font-mono text-theme mb-6">
+          <p className="text-body font-mono mb-6 text-primary">
             The post you're looking for doesn't exist.
           </p>
           <button
@@ -108,11 +108,11 @@ export default function PostDetail() {
           <header className="mb-10">
             <time 
               dateTime={post.date}
-              className="text-sm font-mono text-theme-muted font-medium block mb-3"
+              className="text-sm font-mono font-medium block mb-3 text-muted"
             >
               {formatDate(post.date)}
             </time>
-            <h1 className="text-header font-mono font-semibold text-theme leading-tight">
+            <h1 className="text-header font-mono font-semibold leading-tight text-primary">
               {post.title}
             </h1>
           </header>

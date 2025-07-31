@@ -11,7 +11,7 @@ const Loading = ({ size = 'md', text = 'Loading...', className = '' }) => {
         <div className="w-full h-full border-4 border-gray-200 border-t-blue-600 rounded-full"></div>
       </div>
       {text && (
-        <p className="text-darktext text-sm font-medium">{text}</p>
+        <p className="text-primary text-sm font-medium">{text}</p>
       )}
     </div>
   );

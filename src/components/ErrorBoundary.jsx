@@ -29,10 +29,10 @@ class ErrorBoundary extends React.Component {
             <h1 className="text-4xl font-bold font-mono mb-4 text-red-600">
               Oops!
             </h1>
-            <h2 className="text-xl mb-4 text-darktext">
+            <h2 className="text-xl mb-4 text-primary">
               Something went wrong
             </h2>
-            <p className="text-darktext mb-6">
+            <p className="text-primary mb-6">
               We're sorry, but something unexpected happened. Please try refreshing the page.
             </p>
             
@@ -48,7 +48,7 @@ class ErrorBoundary extends React.Component {
                 onClick={() => window.location.href = '/'}
                 variant="outline"
                 size="lg"
-                className="rounded-lg border-gray-300 text-darktext hover:bg-gray-100"
+                className="rounded-lg border-gray-300 text-primary hover:bg-gray-100"
               >
                 Go Home
               </Button>
@@ -56,7 +56,7 @@ class ErrorBoundary extends React.Component {
             
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="mt-8 text-left">
-                <summary className="cursor-pointer text-sm text-gray-500 hover:text-darktext">
+                <summary className="cursor-pointer text-sm text-gray-500 hover:text-primary">
                   Error Details (Development Only)
                 </summary>
                 <pre className="mt-2 text-xs bg-gray-100 p-4 rounded overflow-auto text-red-600">

@@ -6,19 +6,19 @@ export const socialLinks = [
     href: '/contact', 
     icon: HiMail, 
     label: 'Email', 
-    color: 'hover:text-linkblue', 
+    color: 'hover:text-accent', 
     isInternal: true 
   },
   { 
     href: 'https://github.com/aibekz', 
     icon: SiGithub, 
     label: 'GitHub', 
-    color: 'hover:text-linkblue' 
+    color: 'hover:text-accent' 
   },
   { 
     href: 'https://linkedin.com/in/aibekz', 
     icon: SiLinkedin, 
     label: 'LinkedIn', 
-    color: 'hover:text-linkblue' 
+    color: 'hover:text-accent' 
   }
 ];

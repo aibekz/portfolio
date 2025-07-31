@@ -21,8 +21,8 @@ export default function TypewriterText({
           deleteSpeed: deleteSpeed,
           pauseFor: pauseFor,
           cursor: '|',
-          cursorClassName: 'typewriter-cursor text-theme',
-          wrapperClassName: 'typewriter-wrapper text-theme',
+          cursorClassName: 'typewriter-cursor',
+          wrapperClassName: 'typewriter-wrapper',
         }}
         onInit={(typewriter) => {
           if (onComplete) {

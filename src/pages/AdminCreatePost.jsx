@@ -46,13 +46,13 @@ export default function AdminCreatePost() {
           <div className="mb-6">
             <button
               onClick={() => navigate('/admin')}
-              className="text-linkblue underline font-mono text-body hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+              className="nav-link underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded"
             >
               ← Back to Admin Dashboard
             </button>
           </div>
 
-          <h1 className="text-header font-mono font-semibold mb-8 text-darktext">
+          <h1 className="text-header font-mono font-semibold mb-8 text-primary">
             Create New Post
           </h1>
           
