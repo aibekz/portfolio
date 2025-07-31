@@ -177,3 +177,21 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Dynamic Logo Styles */
+.dynamic-logo {
+  transition: all 0.3s ease;
+}
+
+.logo-bg {
+  fill: var(--bg-color);
+}
+
+.logo-text {
+  fill: var(--text-color);
+}
+
+/* Dark mode specific logo colors */
+:root.dark .logo-text {
+  fill: var(--color-matrix-green);
+}
