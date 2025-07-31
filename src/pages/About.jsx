@@ -22,30 +22,36 @@ export default function About() {
 
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="">
-            <p className="text-body mb-6 text-darktext text-center font-mono">
+            <p className="text-body mb-6 text-center font-mono" style={{ color: 'var(--text-color)' }}>
               Hello, I'm a software engineer based in the USA!
             </p>
-            <h1 className="text-header font-bold font-mono mb-3 text-darktext">
+            <h1 className="text-header font-bold font-mono mb-3" style={{ color: 'var(--text-color)' }}>
               {siteConfig.name}
             </h1>
-            <p className="text-body mb-8 text-darktext font-mono">
+            <p className="text-body mb-8 font-mono" style={{ color: 'var(--text-color)' }}>
               Software Engineer | Front-End Developer
             </p>
           </div>
 
           <section className="prose prose-lg max-w-none">
             <div>
-              <h2 className="text-header font-semibold mb-4 text-darktext font-mono">About</h2>
-              <p className="text-body leading-relaxed text-darktext mb-4 font-mono">
+              <h2 className="text-header font-semibold mb-4 font-mono" style={{ color: 'var(--text-color)' }}>About</h2>
+              <p className="text-body leading-relaxed mb-4 font-mono" style={{ color: 'var(--text-color)' }}>
                 Aibek is a software engineer based in Austin, TX, passionate about building meaningful,
                 engaging, accessible, and user-centric web applications. He has a knack for launching products—from planning and design to solving real-world problems through code.
               </p>
-              <p className="text-body leading-relaxed text-darktext mb-4 font-mono">
+              <p className="text-body leading-relaxed mb-4 font-mono" style={{ color: 'var(--text-color)' }}>
                 His approach combines technical expertise with creative problem-solving, ensuring that
                 every project not only functions flawlessly but also delivers an exceptional user experience.
               </p>
-              <p className="text-body leading-relaxed text-darktext mb-6 font-mono">
-                Aibek also writes tech-related <Link to="/posts" className='text-linkblue underline'>posts</Link> sharing insights, 
+              <p className="text-body leading-relaxed mb-6 font-mono" style={{ color: 'var(--text-color)' }}>
+                Aibek also writes tech-related <Link 
+                  to="/posts" 
+                  className='underline transition-colors duration-200'
+                  style={{ color: 'var(--link-color)' }}
+                  onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                  onMouseLeave={(e) => e.target.style.opacity = '1'}
+                >posts</Link> sharing insights, 
                 tutorials, and thoughts on software development, emerging technologies, and industry trends.
               </p>
             </div>

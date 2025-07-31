@@ -2,6 +2,7 @@ import { HiMenu, HiX } from 'react-icons/hi';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
+import ThemeToggle from './ThemeToggle.jsx';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -14,37 +15,45 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 bg-white">
+            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 transition-colors duration-300" style={{ backgroundColor: 'var(--bg-color)' }}>
                 <div className="flex items-center justify-between">
                     {/* Logo always on left */}
                     <div>
                         <Logo />
                     </div>
 
-                    {/* Desktop: Navigation links on right */}
+                    {/* Desktop: Navigation links and theme toggle on right */}
                     <div className="hidden md:flex space-x-6 items-center">
                         {navigationLinks.map(({ href, label }) => (
                             <Link
                                 key={href}
                                 to={href}
-                                className="text-darktext hover:text-linkblue transition-colors duration-200 font-medium"
+                                className="font-medium transition-colors duration-200"
+                                style={{ 
+                                    color: 'var(--text-color)',
+                                    ':hover': { color: 'var(--link-color)' }
+                                }}
+                                onMouseEnter={(e) => e.target.style.color = 'var(--link-color)'}
+                                onMouseLeave={(e) => e.target.style.color = 'var(--text-color)'}
                             >
                                 {label}
                             </Link>
                         ))}
+                        <ThemeToggle />
                     </div>
 
-                    {/* Mobile: Menu button on right */}
-                    <div className="md:hidden">
+                    {/* Mobile: Menu button and theme toggle on right */}
+                    <div className="md:hidden flex items-center space-x-2">
+                        <ThemeToggle />
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
                             className="focus:outline-none p-2"
                             aria-label="Toggle menu"
                         >
                             {menuOpen ? (
-                                <HiX className="w-6 h-6 text-darktext" />
+                                <HiX className="w-6 h-6" style={{ color: 'var(--text-color)' }} />
                             ) : (
-                                <HiMenu className="w-6 h-6 text-darktext" />
+                                <HiMenu className="w-6 h-6" style={{ color: 'var(--text-color)' }} />
                             )}
                         </button>
                     </div>
@@ -53,7 +62,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             {menuOpen && (
-                <div className="fixed inset-0 z-50 bg-white md:hidden">
+                <div className="fixed inset-0 z-50 md:hidden transition-colors duration-300" style={{ backgroundColor: 'var(--bg-color)' }}>
                     <div className="flex flex-col h-full">
                         {/* Close button */}
                         <div className="flex justify-end p-6">
@@ -62,7 +71,7 @@ const Navbar = () => {
                                 className="focus:outline-none p-2"
                                 aria-label="Close menu"
                             >
-                                <HiX className="w-8 h-8 text-darktext" />
+                                <HiX className="w-8 h-8" style={{ color: 'var(--text-color)' }} />
                             </button>
                         </div>
 
@@ -80,7 +89,12 @@ const Navbar = () => {
                                             key={href}
                                             to={href}
                                             onClick={() => setMenuOpen(false)}
-                                            className="block text-xl text-darktext hover:text-linkblue transition-colors duration-200 font-medium"
+                                            className="block text-xl font-medium transition-colors duration-200"
+                                            style={{ 
+                                                color: 'var(--text-color)'
+                                            }}
+                                            onMouseEnter={(e) => e.target.style.color = 'var(--link-color)'}
+                                            onMouseLeave={(e) => e.target.style.color = 'var(--text-color)'}
                                         >
                                             {label}
                                         </Link>

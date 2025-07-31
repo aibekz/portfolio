@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 import { PostsProvider } from './contexts/PostsContext.jsx';
 import { AdminProvider } from './contexts/AdminContext.jsx';
+import { ThemeProvider } from './contexts/ThemeContext.jsx';
 import Home from './pages/Home.jsx';
 import Contact from './pages/Contact.jsx';
 import About from './pages/About.jsx';
@@ -20,24 +21,26 @@ function AppContent() {
   useGoogleAnalytics();
 
   return (
-    <AdminProvider>
-      <PostsProvider>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/posts" element={<Posts />} />
-            <Route path="/posts/:slug" element={<PostDetail />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin/posts/create" element={<AdminCreatePost />} />
-            <Route path="/admin/posts/:id/edit" element={<AdminEditPost />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </PostsProvider>
-    </AdminProvider>
+    <ThemeProvider>
+      <AdminProvider>
+        <PostsProvider>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/posts" element={<Posts />} />
+              <Route path="/posts/:slug" element={<PostDetail />} />
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/posts/create" element={<AdminCreatePost />} />
+              <Route path="/admin/posts/:id/edit" element={<AdminEditPost />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </PostsProvider>
+      </AdminProvider>
+    </ThemeProvider>
   );
 }
 

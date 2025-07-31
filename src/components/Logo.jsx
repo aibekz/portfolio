@@ -7,7 +7,7 @@ const Logo = ({ onLogoClick }) => (
     className="flex items-center space-x-2"
     onClick={onLogoClick}
   >
-    <span className="text-2xl font-bold font-mono text-darktext">
+    <span className="text-2xl font-bold font-mono" style={{ color: 'var(--text-color)' }}>
       {siteConfig.author.logo}
     </span>
   </Link>

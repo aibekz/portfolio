@@ -52,17 +52,17 @@ export default function AdminSignup() {
       <div className="flex-1 flex items-center justify-center px-6">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <h1 className="text-header font-mono font-semibold text-darktext mb-2">
+            <h1 className="text-header font-mono font-semibold mb-2" style={{ color: 'var(--text-color)' }}>
               Create Admin Account
             </h1>
-            <p className="text-body font-mono text-darktext">
+            <p className="text-body font-mono" style={{ color: 'var(--text-color)' }}>
               Create your admin account to manage the site
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="username" className="block text-body font-mono font-semibold mb-2 text-darktext">
+              <label htmlFor="username" className="block text-body font-mono font-semibold mb-2" style={{ color: 'var(--text-color)' }}>
                 Username
               </label>
               <input
@@ -74,13 +74,18 @@ export default function AdminSignup() {
                 required
                 minLength={3}
                 maxLength={30}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-body focus:outline-none focus:ring-2 focus:ring-linkblue focus:border-transparent"
+                className="w-full px-3 py-2 rounded-md font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200"
+                style={{ 
+                  backgroundColor: 'var(--bg-color)',
+                  color: 'var(--text-color)',
+                  border: '1px solid var(--border-color)'
+                }}
                 placeholder="Enter username (3-30 characters)..."
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-body font-mono font-semibold mb-2 text-darktext">
+              <label htmlFor="email" className="block text-body font-mono font-semibold mb-2" style={{ color: 'var(--text-color)' }}>
                 Email
               </label>
               <input
@@ -90,13 +95,18 @@ export default function AdminSignup() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-body focus:outline-none focus:ring-2 focus:ring-linkblue focus:border-transparent"
+                className="w-full px-3 py-2 rounded-md font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200"
+                style={{ 
+                  backgroundColor: 'var(--bg-color)',
+                  color: 'var(--text-color)',
+                  border: '1px solid var(--border-color)'
+                }}
                 placeholder="Enter email address..."
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-body font-mono font-semibold mb-2 text-darktext">
+              <label htmlFor="password" className="block text-body font-mono font-semibold mb-2" style={{ color: 'var(--text-color)' }}>
                 Password
               </label>
               <input
@@ -107,7 +117,12 @@ export default function AdminSignup() {
                 onChange={handleInputChange}
                 required
                 minLength={6}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md font-mono text-body focus:outline-none focus:ring-2 focus:ring-linkblue focus:border-transparent"
+                className="w-full px-3 py-2 rounded-md font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200"
+                style={{ 
+                  backgroundColor: 'var(--bg-color)',
+                  color: 'var(--text-color)',
+                  border: '1px solid var(--border-color)'
+                }}
                 placeholder="Enter password (min 6 characters)..."
               />
             </div>
@@ -124,7 +139,10 @@ export default function AdminSignup() {
           <div className="mt-6 text-center space-y-3">
             <Link
               to="/admin/login"
-              className="text-linkblue underline font-mono text-body hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+              className="underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded transition-colors duration-200"
+              style={{ color: 'var(--link-color)' }}
+              onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+              onMouseLeave={(e) => e.target.style.opacity = '1'}
             >
               Already have an account? Login
             </Link>
@@ -132,7 +150,10 @@ export default function AdminSignup() {
             <div>
               <button
                 onClick={() => navigate('/')}
-                className="text-darktext underline font-mono text-body hover:text-darktext focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded"
+                className="underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded transition-colors duration-200"
+                style={{ color: 'var(--link-color)' }}
+                onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                onMouseLeave={(e) => e.target.style.opacity = '1'}
               >
                 Back to Home
               </button>

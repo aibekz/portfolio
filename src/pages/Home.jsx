@@ -11,23 +11,28 @@ export default function Home() {
         url={siteConfig.url}
       />
       <div className="flex-1 flex items-center justify-center text-center px-6">
-        <div className="text-darktext">
+        <div style={{ color: 'var(--text-color)' }}>
           <h1 className="text-4xl font-semibold font-mono mb-4">
             {siteConfig.author.greeting}
             <Link 
               to="/about" 
-              className="text-linkblue hover:underline ml-1 hover:text-darktext focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+              className="ml-1 hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded transition-colors duration-200"
+              style={{ 
+                color: 'var(--link-color)'
+              }}
+              onMouseEnter={(e) => e.target.style.color = 'var(--text-color)'}
+              onMouseLeave={(e) => e.target.style.color = 'var(--link-color)'}
               aria-label={`Learn more about ${siteConfig.author.name}`}
             >
               {siteConfig.author.name}
             </Link>
           </h1>
 
-          <h2 className="text-4xl font-semibold font-mono mb-6 text-darktext">
+          <h2 className="text-4xl font-semibold font-mono mb-6" style={{ color: 'var(--text-color)' }}>
             {siteConfig.author.title}
           </h2>
 
-          <p className="text-body max-w-xl mx-auto font-mono leading-relaxed text-darktext mb-6">
+          <p className="text-body max-w-xl mx-auto font-mono leading-relaxed mb-6" style={{ color: 'var(--text-color)' }}>
             {siteConfig.author.subtitle}
           </p>
         </div>

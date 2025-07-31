@@ -4,8 +4,35 @@
 @theme {
   --color-linkblue: #0000EE;
   --color-darktext: #111111;
+  --color-bg-dark: #111213;
+  --color-fg-light: #d6d6d6;
+  --color-matrix-green: #39FF14;
   --font-size-header: 27px;
   --font-size-body: 18px;
+}
+
+/* Root variables for light and dark themes */
+:root {
+  --bg-color: #ffffff;
+  --text-color: var(--color-darktext);
+  --link-color: var(--color-linkblue);
+  --border-color: #e5e7eb;
+  --hover-bg: #f3f4f6;
+}
+
+:root.dark {
+  --bg-color: var(--color-bg-dark);
+  --text-color: var(--color-fg-light);
+  --link-color: var(--color-matrix-green);
+  --border-color: #374151;
+  --hover-bg: #1f2937;
+}
+
+/* Base styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom utility classes */

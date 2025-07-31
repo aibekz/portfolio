@@ -75,7 +75,7 @@ export default function AdminDashboard() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
-            <h1 className="text-header font-mono font-semibold text-darktext mb-4 sm:mb-0">
+            <h1 className="text-header font-mono font-semibold mb-4 sm:mb-0" style={{ color: 'var(--text-color)' }}>
               Admin Dashboard
             </h1>
             <div className="flex gap-3">
@@ -90,29 +90,32 @@ export default function AdminDashboard() {
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-body font-mono font-semibold text-darktext mb-2">
+            <div className="p-6 rounded-lg transition-colors duration-200" style={{ backgroundColor: 'var(--hover-bg)' }}>
+              <h3 className="text-body font-mono font-semibold mb-2" style={{ color: 'var(--text-color)' }}>
                 Total Posts
               </h3>
-              <p className="text-2xl font-mono font-bold text-linkblue">
+              <p className="text-2xl font-mono font-bold" style={{ color: 'var(--link-color)' }}>
                 {statsLoading ? '...' : stats.totalPosts}
               </p>
             </div>
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-body font-mono font-semibold text-darktext mb-2">
+            <div className="p-6 rounded-lg transition-colors duration-200" style={{ backgroundColor: 'var(--hover-bg)' }}>
+              <h3 className="text-body font-mono font-semibold mb-2" style={{ color: 'var(--text-color)' }}>
                 Recent Posts
               </h3>
-              <p className="text-2xl font-mono font-bold text-linkblue">
+              <p className="text-2xl font-mono font-bold" style={{ color: 'var(--link-color)' }}>
                 {statsLoading ? '...' : stats.recentPosts}
               </p>
             </div>
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-body font-mono font-semibold text-darktext mb-2">
+            <div className="p-6 rounded-lg transition-colors duration-200" style={{ backgroundColor: 'var(--hover-bg)' }}>
+              <h3 className="text-body font-mono font-semibold mb-2" style={{ color: 'var(--text-color)' }}>
                 Quick Actions
               </h3>
               <Link 
                 to="/posts"
-                className="text-linkblue underline font-mono text-body hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+                className="underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded transition-colors duration-200"
+                style={{ color: 'var(--link-color)' }}
+                onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                onMouseLeave={(e) => e.target.style.opacity = '1'}
               >
                 View Public Posts
               </Link>
@@ -120,16 +123,16 @@ export default function AdminDashboard() {
           </div>
 
           {/* Posts Management */}
-          <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200">
-              <h2 className="text-body font-mono font-semibold text-darktext">
+          <div className="rounded-lg overflow-hidden transition-colors duration-200" style={{ backgroundColor: 'var(--bg-color)', border: '1px solid var(--border-color)' }}>
+            <div className="px-6 py-4 transition-colors duration-200" style={{ borderBottom: '1px solid var(--border-color)' }}>
+              <h2 className="text-body font-mono font-semibold" style={{ color: 'var(--text-color)' }}>
                 Manage Posts
               </h2>
             </div>
             
             {loading ? (
               <div className="px-6 py-12 text-center">
-                <p className="text-body font-mono text-darktext">
+                <p className="text-body font-mono" style={{ color: 'var(--text-color)' }}>
                   Loading posts...
                 </p>
               </div>
@@ -144,7 +147,7 @@ export default function AdminDashboard() {
               </div>
             ) : posts.length === 0 ? (
               <div className="px-6 py-12 text-center">
-                <p className="text-body font-mono text-darktext mb-6">
+                <p className="text-body font-mono mb-6" style={{ color: 'var(--text-color)' }}>
                   No posts yet. Create your first post!
                 </p>
                 <Button to="/admin/posts/create" variant="primary">
@@ -152,18 +155,18 @@ export default function AdminDashboard() {
                 </Button>
               </div>
             ) : (
-              <div className="divide-y divide-gray-200">
+              <div style={{ borderColor: 'var(--border-color)' }} className="divide-y">
                 {posts.map((post) => (
-                  <div key={post.id} className="px-6 py-4">
+                  <div key={post.id} className="px-6 py-4" style={{ borderColor: 'var(--border-color)' }}>
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                       <div className="flex-1">
-                        <h3 className="text-body font-mono font-semibold text-darktext mb-1">
+                        <h3 className="text-body font-mono font-semibold mb-1" style={{ color: 'var(--text-color)' }}>
                           {post.title}
                         </h3>
-                        <p className="text-sm font-mono text-darktext">
+                        <p className="text-sm font-mono" style={{ color: 'var(--text-color)' }}>
                           {formatDate(post.date)}
                         </p>
-                        <p className="text-sm font-mono text-gray-500 mt-1">
+                        <p className="text-sm font-mono mt-1" style={{ color: 'var(--text-color)', opacity: '0.7' }}>
                           {post.content.substring(0, 100)}...
                         </p>
                       </div>

@@ -15,12 +15,12 @@ const Contact = () => {
       />
       <div className="flex-grow flex items-center justify-center px-6 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
-          <h1 className="text-header font-bold font-mono mb-8 text-darktext">
+          <h1 className="text-header font-bold font-mono mb-8" style={{ color: 'var(--text-color)' }}>
             Get In Touch
           </h1>
           
           <div className="mb-8">
-            <p className="text-body mb-6 text-darktext leading-relaxed font-mono">
+            <p className="text-body mb-6 leading-relaxed font-mono" style={{ color: 'var(--text-color)' }}>
               I'm always interested in hearing about new opportunities, 
               collaborating on exciting projects, or just having a conversation 
               about technology and development.
@@ -28,10 +28,13 @@ const Contact = () => {
             
             <div className="space-y-4">
               <div>
-                <h2 className="text-header font-semibold mb-2 text-darktext font-mono">Email</h2>
+                <h2 className="text-header font-semibold mb-2 font-mono" style={{ color: 'var(--text-color)' }}>Email</h2>
                 <Link 
                   to={`mailto:${siteConfig.email}`}
-                  className="font-mono text-body text-linkblue hover:text-blue-800 underline focus:outline-none focus:ring-2 focus:ring-linkblue focus:ring-offset-2 rounded"
+                  className="font-mono text-body underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded transition-colors duration-200"
+                  style={{ color: 'var(--link-color)' }}
+                  onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                  onMouseLeave={(e) => e.target.style.opacity = '1'}
                 >
                   {formatEmail(siteConfig.email)}
                 </Link>
