@@ -135,3 +135,45 @@ body {
 .theme-toggle:focus {
   ring-color: var(--link-color);
 }
+
+/* Typewriter animation styles */
+.typewriter-container {
+  display: inline-block;
+}
+
+.typewriter-wrapper {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+}
+
+.typewriter-cursor {
+  color: var(--text-color);
+  font-weight: 100;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Dark mode typewriter cursor */
+:root.dark .typewriter-cursor {
+  color: var(--color-matrix-green);
+}
+
+/* Fade-in animation for content after typewriter */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

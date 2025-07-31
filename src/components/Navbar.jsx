@@ -58,8 +58,9 @@ const Navbar = () => {
             {menuOpen && (
                 <div className="fixed inset-0 z-50 md:hidden transition-colors duration-300" style={{ backgroundColor: 'var(--bg-color)' }}>
                     <div className="flex flex-col h-full">
-                        {/* Close button */}
-                        <div className="flex justify-end p-6">
+                        {/* Close button and theme toggle */}
+                        <div className="flex justify-end items-center space-x-2 p-6">
+                            <ThemeToggle />
                             <button
                                 onClick={() => setMenuOpen(false)}
                                 className="focus:outline-none p-2"
