@@ -63,10 +63,10 @@ export default function PostForm({ post, onSubmit, onCancel, isEditing = false }
             <button
               type="button"
               onClick={() => setShowPreview(false)}
-              className={`px-3 py-1 text-sm font-mono rounded ${
+              className={`px-3 py-1 text-sm font-mono rounded transition-colors duration-200 ${
                 !showPreview 
-                  ? 'text-accent border border-accent' 
-                  : 'bg-gray-200 text-primary hover:bg-gray-300'
+                  ? 'text-matrix-green border border-matrix-green bg-matrix-green/10' 
+                  : 'border border-fg-light/20 text-fg-light hover:border-matrix-green/50'
               }`}
             >
               Write
@@ -74,10 +74,10 @@ export default function PostForm({ post, onSubmit, onCancel, isEditing = false }
             <button
               type="button"
               onClick={() => setShowPreview(true)}
-              className={`px-3 py-1 text-sm font-mono rounded ${
+              className={`px-3 py-1 text-sm font-mono rounded transition-colors duration-200 ${
                 showPreview 
-                  ? 'text-accent border border-accent' 
-                  : 'bg-gray-200 text-primary hover:bg-gray-300'
+                  ? 'text-matrix-green border border-matrix-green bg-matrix-green/10' 
+                  : 'border border-fg-light/20 text-fg-light hover:border-matrix-green/50'
               }`}
             >
               Preview
@@ -139,7 +139,7 @@ console.log('Hello, world!');
         <Button type="submit" variant="primary">
           {isEditing ? 'Update Post' : 'Create Post'}
         </Button>
-        <Button type="button" variant="secondary" onClick={onCancel}>
+        <Button type="button" variant="outline" onClick={onCancel}>
           Cancel
         </Button>
       </div>

@@ -42,9 +42,9 @@ const Navbar = () => {
                             aria-label="Toggle menu"
                         >
                             {menuOpen ? (
-                                <HiX className="w-6 h-6 icon-primary" />
+                                <HiX className="w-6 h-6 text-matrix-green" />
                             ) : (
-                                <HiMenu className="w-6 h-6 icon-primary" />
+                                <HiMenu className="w-6 h-6 text-matrix-green" />
                             )}
                         </button>
                     </div>
@@ -62,7 +62,7 @@ const Navbar = () => {
                                 className="focus:outline-none p-2"
                                 aria-label="Close menu"
                             >
-                                <HiX className="w-8 h-8 icon-primary" />
+                                <HiX className="w-8 h-8 text-matrix-green" />
                             </button>
                         </div>
 

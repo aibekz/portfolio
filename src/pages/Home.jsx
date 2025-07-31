@@ -1,12 +1,13 @@
-import { siteConfig } from '../constants/siteConfig';
-import SEO from '../components/SEO';
-import TypewriterText from '../components/TypewriterText';
+import { siteConfig } from '../constants/siteConfig.js';
+import { SEO_CONFIG, ANIMATION_CONFIG } from '../constants/index.js';
+import SEO from '../components/SEO.jsx';
+import TypewriterText from '../components/TypewriterText.jsx';
 
 export default function Home() {
   return (
     <>
       <SEO 
-        title="Aibek Z. - Software Developer"
+        title={SEO_CONFIG.DEFAULT_TITLE}
         description={siteConfig.author.subtitle}
         url={siteConfig.url}
       />
@@ -14,11 +15,11 @@ export default function Home() {
         <div className="text-primary">
           <h1 className="text-4xl font-semibold font-mono mb-4">
             <TypewriterText
-              strings={[`Hi. I'm ${siteConfig.author.name}`]}
-              delay={75}
-              pauseFor={4000}
+              strings={[`${siteConfig.author.greeting}${siteConfig.author.name}`]}
+              delay={ANIMATION_CONFIG.TYPEWRITER_DELAY}
+              pauseFor={ANIMATION_CONFIG.TYPEWRITER_PAUSE}
               loop={true}
-              deleteSpeed={30}
+              deleteSpeed={ANIMATION_CONFIG.TYPEWRITER_DELETE_SPEED}
               className="inline-block"
             />
           </h1>

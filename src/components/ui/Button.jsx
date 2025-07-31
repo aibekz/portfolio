@@ -9,13 +9,13 @@ const Button = ({
   className = '', 
   ...props 
 }) => {
-  const baseClasses = 'inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+  const baseClasses = 'inline-flex items-center justify-center font-medium font-mono transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-xl';
   
   const variants = {
-    primary: 'text-accent hover:text-accent focus:ring-2 focus:ring-accent',
+    primary: 'bg-gradient-to-r from-matrix-green to-matrix-green/80 text-bg-dark hover:shadow-lg hover:shadow-matrix-green/25 focus:ring-matrix-green/50 transform hover:scale-[1.02] active:scale-[0.98]',
     secondary: 'bg-gray-200 text-primary hover:bg-gray-300 focus:ring-gray-500',
     danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
-    outline: 'border border-white text-white hover:bg-white hover:text-primary',
+    outline: 'border border-fg-light text-fg-light hover:border-matrix-green hover:text-matrix-green focus:ring-matrix-green/50',
     ghost: 'text-white hover:bg-white/10'
   };
   

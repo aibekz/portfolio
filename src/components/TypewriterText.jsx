@@ -14,12 +14,12 @@ export default function TypewriterText({
     <div className={`typewriter-container ${className}`}>
       <Typewriter
         options={{
-          strings: strings,
-          autoStart: autoStart,
-          loop: loop,
-          delay: delay,
-          deleteSpeed: deleteSpeed,
-          pauseFor: pauseFor,
+          strings,
+          autoStart,
+          loop,
+          delay,
+          deleteSpeed,
+          pauseFor,
           cursor: '|',
           cursorClassName: 'typewriter-cursor',
           wrapperClassName: 'typewriter-wrapper',

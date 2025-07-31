@@ -98,7 +98,7 @@ export default function PostDetail() {
     <>
       <SEO 
         title={`${post.title} - Aibek Z.`}
-        description={post.content.substring(0, 160) + '...'}
+        description={`${post.content.substring(0, 160)  }...`}
         url={`${siteConfig.url}/posts/${slug}`}
       />
       <div className="flex-1 px-6 py-8 mt-8">

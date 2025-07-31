@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { postService } from '../services/postService.js';
+import { CACHE_CONFIG, ERROR_MESSAGES, SUCCESS_MESSAGES } from '../constants/index.js';
 
 const PostsContext = createContext();
 
@@ -10,7 +11,7 @@ export function PostsProvider({ children }) {
   const cacheRef = useRef({
     posts: null,
     timestamp: null,
-    CACHE_DURATION: 5 * 60 * 1000 // 5 minutes
+    CACHE_DURATION: CACHE_CONFIG.POSTS_DURATION
   });
 
   // Load posts on component mount
@@ -41,7 +42,8 @@ export function PostsProvider({ children }) {
       
       setPosts(fetchedPosts);
     } catch (err) {
-      setError(err.message);
+      const errorMessage = err.message || ERROR_MESSAGES.GENERIC;
+      setError(errorMessage);
       console.error('Error loading posts:', err);
     } finally {
       setLoading(false);
@@ -62,9 +64,13 @@ export function PostsProvider({ children }) {
         cache.timestamp = Date.now();
       }
       
+      // Could show success message here if needed
+      console.log(SUCCESS_MESSAGES.POST_CREATED);
+      
       return newPost;
     } catch (err) {
-      setError(err.message);
+      const errorMessage = err.message || ERROR_MESSAGES.GENERIC;
+      setError(errorMessage);
       console.error('Error creating post:', err);
       throw err;
     }
@@ -132,9 +138,12 @@ export function PostsProvider({ children }) {
         cache.timestamp = Date.now();
       }
       
+      console.log(SUCCESS_MESSAGES.POST_UPDATED);
+      
       return updatedPost;
     } catch (err) {
-      setError(err.message);
+      const errorMessage = err.message || ERROR_MESSAGES.GENERIC;
+      setError(errorMessage);
       console.error('Error updating post:', err);
       throw err;
     }
@@ -153,8 +162,11 @@ export function PostsProvider({ children }) {
         cache.posts = cache.posts.filter(post => post.id !== id);
         cache.timestamp = Date.now();
       }
+      
+      console.log(SUCCESS_MESSAGES.POST_DELETED);
     } catch (err) {
-      setError(err.message);
+      const errorMessage = err.message || ERROR_MESSAGES.GENERIC;
+      setError(errorMessage);
       console.error('Error deleting post:', err);
       throw err;
     }

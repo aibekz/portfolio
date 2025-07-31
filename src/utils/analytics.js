@@ -12,7 +12,7 @@ export const trackEvent = (action, category, label = null, value = null) => {
     const eventParams = {
       event_category: category,
       event_label: label,
-      value: value,
+      value,
     };
 
     // Remove null values
