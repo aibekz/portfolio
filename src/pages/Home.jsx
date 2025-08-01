@@ -13,7 +13,7 @@ export default function Home() {
       />
       <div className="flex-1 flex items-center justify-center text-center">
         <div className="text-primary max-w-3xl mx-auto px-6 py-8">
-          <h1 className="text-4xl font-semibold font-mono mb-4">
+          <h1 className="text-2xl md:text-4xl font-semibold font-mono mb-4">
             <TypewriterText
               strings={[`${siteConfig.author.greeting}${siteConfig.author.name}`]}
               delay={ANIMATION_CONFIG.TYPEWRITER_DELAY}
@@ -24,7 +24,7 @@ export default function Home() {
             />
           </h1>
 
-          <h2 className="text-4xl font-semibold font-mono mb-6 text-primary">
+          <h2 className="text-2xl  md:text-4xl font-semibold font-mono mb-6 text-primary">
             {siteConfig.author.title}
           </h2>
 
