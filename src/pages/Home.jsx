@@ -11,8 +11,8 @@ export default function Home() {
         description={siteConfig.author.subtitle}
         url={siteConfig.url}
       />
-      <div className="flex-1 flex items-center justify-center text-center px-6">
-        <div className="text-primary">
+      <div className="flex-1 flex items-center justify-center text-center">
+        <div className="text-primary max-w-3xl mx-auto px-6 py-8">
           <h1 className="text-4xl font-semibold font-mono mb-4">
             <TypewriterText
               strings={[`${siteConfig.author.greeting}${siteConfig.author.name}`]}

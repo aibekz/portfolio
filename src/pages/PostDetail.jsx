@@ -44,8 +44,8 @@ export default function PostDetail() {
 
   if (loading) {
     return (
-      <div className="flex-1 px-6 py-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="flex-1">
+        <div className="max-w-3xl mx-auto px-6 py-8 text-center">
           <p className="text-body font-mono text-primary">Loading post...</p>
         </div>
       </div>
@@ -54,8 +54,8 @@ export default function PostDetail() {
 
   if (error) {
     return (
-      <div className="flex-1 px-6 py-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="flex-1">
+        <div className="max-w-3xl mx-auto px-6 py-8 text-center">
           <h1 className="text-header font-mono font-semibold mb-4 text-primary">
             Error Loading Post
           </h1>
@@ -75,8 +75,8 @@ export default function PostDetail() {
 
   if (!post) {
     return (
-      <div className="flex-1 px-6 py-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="flex-1">
+        <div className="max-w-3xl mx-auto px-6 py-8 text-center">
           <h1 className="text-header font-mono font-semibold mb-4 text-primary">
             Post Not Found
           </h1>
@@ -101,8 +101,8 @@ export default function PostDetail() {
         description={`${post.content.substring(0, 160)  }...`}
         url={`${siteConfig.url}/posts/${slug}`}
       />
-      <div className="flex-1 px-6 py-8 mt-8">
-        <div className="max-w-3xl mx-auto">
+      <div className="flex-1">
+        <div className="max-w-3xl mx-auto px-6 py-8">
 
           {/* Post header */}
           <header className="mb-10">

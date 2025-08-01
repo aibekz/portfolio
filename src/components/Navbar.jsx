@@ -14,8 +14,8 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 transition-colors duration-300 bg-primary">
-                <div className="flex items-center justify-between">
+            <nav className="fixed top-0 left-0 w-full z-50 transition-colors duration-300 bg-primary">
+                <div className="max-w-3xl mx-auto flex items-center justify-between p-6">
                     {/* Logo always on left */}
                     <div>
                         <Logo />

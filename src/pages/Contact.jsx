@@ -13,14 +13,15 @@ const Contact = () => {
         description={contactDescription}
         url={`${siteConfig.url}contact`}
       />
-      <div className="flex-grow flex items-center justify-center px-6 py-16 sm:py-24">
-        <div className="max-w-2xl mx-auto text-center">
-          <h1 className="text-header font-bold font-mono mb-8" style={{ color: 'var(--text-color)' }}>
-            Get In Touch
+      <div className="flex-1">
+        <div className="max-w-3xl mx-auto px-6 py-8">
+          <h1 className="text-header font-mono font-semibold mb-8 text-primary">
+            Contact
           </h1>
           
-          <div className="mb-8">
-            <p className="text-body mb-6 leading-relaxed font-mono" style={{ color: 'var(--text-color)' }}>
+          <div>
+            
+            <p className="text-body mb-6 leading-relaxed font-mono text-primary">
               I'm always interested in hearing about new opportunities, 
               collaborating on exciting projects, or just having a conversation 
               about technology and development.
@@ -28,7 +29,7 @@ const Contact = () => {
             
             <div className="space-y-4">
               <div>
-                <h2 className="text-header font-semibold mb-2 font-mono" style={{ color: 'var(--text-color)' }}>Email</h2>
+                <h3 className="text-header font-semibold mb-2 font-mono text-primary">Email</h3>
                 <Link 
                   to={`mailto:${siteConfig.email}`}
                   className="font-mono text-body nav-link underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"

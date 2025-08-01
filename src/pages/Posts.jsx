@@ -23,9 +23,9 @@ export default function Posts() {
           description="Blog posts and articles by Aibek Z."
           url={`${siteConfig.url}/posts`}
         />
-        <div className="flex-1 flex items-center justify-center px-6">
-          <div className="text-center">
-            <p className="text-body font-mono" style={{ color: 'var(--text-color)' }}>Loading posts...</p>
+        <div className="flex-1">
+          <div className="max-w-3xl mx-auto px-6 py-8 text-center">
+            <p className="text-body font-mono text-primary">Loading posts...</p>
           </div>
         </div>
       </>
@@ -40,8 +40,8 @@ export default function Posts() {
           description="Blog posts and articles by Aibek Z."
           url={`${siteConfig.url}/posts`}
         />
-        <div className="flex-1 flex items-center justify-center px-6">
-          <div className="text-center">
+        <div className="flex-1">
+          <div className="max-w-3xl mx-auto px-6 py-8 text-center">
             <p className="text-body font-mono text-red-600 mb-4">Error loading posts: {error}</p>
             <button
               onClick={() => window.location.reload()}
@@ -62,15 +62,15 @@ export default function Posts() {
         description="Blog posts and articles by Aibek Z."
         url={`${siteConfig.url}/posts`}
       />
-      <div className="flex-1 px-6 py-8 mt-8">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-header font-mono font-semibold mb-8" style={{ color: 'var(--text-color)' }}>
+      <div className="flex-1">
+        <div className="max-w-3xl mx-auto px-6 py-8">
+          <h1 className="text-header font-mono font-semibold mb-8 text-primary">
             Posts
           </h1>
           
           {posts.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-body font-mono" style={{ color: 'var(--text-color)' }}>
+              <p className="text-body font-mono text-primary">
                 No posts yet. Check back soon!
               </p>
             </div>
@@ -79,7 +79,7 @@ export default function Posts() {
               {posts.map((post) => (
                 <article key={post.id}>
                   <div className="flex flex-col gap-2">
-                    <time className="text-sm font-mono font-medium" style={{ color: 'var(--text-color)', opacity: '0.7' }}>
+                    <time className="text-sm font-mono font-medium text-muted">
                       {formatDate(post.createdAt)}
                     </time>
                     <h2>
