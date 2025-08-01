@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <>
       <SEO 
-        title="Contact"
+        title="Contact - Aibek Z."
         description={contactDescription}
         url={`${siteConfig.url}contact`}
       />

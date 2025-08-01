@@ -9,7 +9,7 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About"
+        title="About - Aibek Z."
         description={aboutDescription}
         url={`${siteConfig.url}about`}
       />

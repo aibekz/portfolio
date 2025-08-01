@@ -8,7 +8,7 @@ const SEO = ({
   image = siteConfig.ogImage,
   type = 'website'
 }) => {
-  const fullTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.title;
+  const fullTitle = title ? title : siteConfig.title;
 
   useEffect(() => {
     // Update document title
