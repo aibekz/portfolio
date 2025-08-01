@@ -30,7 +30,7 @@ if (!process.env.JWT_SECRET) {
 // Rate limiting configuration
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: NODE_ENV === 'development' ? 50 : 5, // More lenient in development
+  max: NODE_ENV === 'development' ? 50 : 20, // Increased from 5 to 20 for production
   message: { error: 'Too many authentication attempts, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
@@ -38,7 +38,7 @@ const authLimiter = rateLimit({
 
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: NODE_ENV === 'development' ? 1000 : 500, // Much higher limits for reading posts
+  max: NODE_ENV === 'development' ? 1000 : 1000, // Same limits for both environments
   message: { error: 'Too many requests, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
