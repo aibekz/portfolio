@@ -22,37 +22,36 @@ export default function About() {
           </div>
 
           <div className="space-y-8">
-          <div className="">
-            <p className="text-body mb-6 text-center font-mono text-primary">
-              Hello, I'm a software engineer based in USA!
-            </p>
-            <h1 className="text-header font-bold font-mono mb-3 text-primary">
-              {siteConfig.name}
-            </h1>
-            <p className="text-body mb-8 font-mono text-primary">
-              Software Engineer II ( UI Developer )
-            </p>
-          </div>
-
-          <section className="prose prose-lg max-w-none">
-            <div>
-              <p className="text-body leading-relaxed mb-4 font-mono text-primary">
-                Aibek is a software engineer based in Texas, passionate about building meaningful,
-                engaging, accessible, and user-centric web applications.He has a knack for all things launching products, from planning and designing all the way to solving real-life problems with code.
+            <div className="">
+              <p className="text-body mb-6 text-center font-mono text-primary">
+                Hello, I'm a software engineer based in USA!
               </p>
-              <p className="text-body leading-relaxed mb-4 font-mono text-primary">
-                His approach combines technical expertise with creative problem-solving, ensuring that
-                every project not only functions flawlessly but also delivers an exceptional user experience.
-              </p>
-              <p className="text-body leading-relaxed mb-6 font-mono text-primary">
-                Aibek also writes tech-related <Link 
-                  to="/posts" 
-                  className='nav-link underline'
-                >posts</Link> sharing insights,
-                tutorials, and thoughts on software development, emerging technologies, and industry trends.
+              <h1 className="text-header font-bold font-mono mb-3 text-primary">
+                {siteConfig.name}
+              </h1>
+              <p className="text-body mb-8 font-mono text-primary">
+                Software Engineer ( Front-end Developer )
               </p>
             </div>
-          </section>
+
+            <section className="prose prose-lg max-w-none">
+              <div>
+                <p className="text-body leading-relaxed mb-4 font-mono text-primary">
+                  Aibek is a software engineer based in Texas, mainly focused on front-end development. He is passionate about building meaningful, engaging, accessible, and user-centric web applications. He has a knack for launching products—from planning and design to solving real-life problems with code.
+                </p>
+                <p className="text-body leading-relaxed mb-4 font-mono text-primary">
+                  His approach combines technical expertise with creative problem-solving, ensuring that
+                  every project not only functions flawlessly but also delivers an exceptional user experience.
+                </p>
+                <p className="text-body leading-relaxed mb-6 font-mono text-primary">
+                  Aibek also writes tech-related <Link
+                    to="/posts"
+                    className='nav-link underline'
+                  >posts</Link> sharing insights,
+                  tutorials, and thoughts on software development, emerging technologies, and industry trends.
+                </p>
+              </div>
+            </section>
           </div>
         </div>
       </div>
