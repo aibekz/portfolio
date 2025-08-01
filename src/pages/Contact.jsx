@@ -1,9 +1,10 @@
 import { siteConfig } from '../constants/siteConfig';
 import { formatEmail } from '../utils';
 import SEO from '../components/SEO';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Contact = () => {
+  const [copied, setCopied] = useState(false);
   const contactDescription = "Get in touch with Aibek Zhumabekov for collaboration opportunities, project inquiries, or just to say hello.";
   
   return (
@@ -30,12 +31,22 @@ const Contact = () => {
             <div className="space-y-4">
               <div>
                 <h3 className="text-header font-semibold mb-2 font-mono text-primary">Email</h3>
-                <Link 
-                  to={`mailto:${siteConfig.email}`}
-                  className="font-mono text-body nav-link underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(siteConfig.email);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  }}
+                  className="font-mono text-body nav-link underline cursor-pointer"
+                  title="Click to copy email to clipboard"
                 >
                   {formatEmail(siteConfig.email)}
-                </Link>
+                </button>
+                {copied && (
+                  <p className="text-sm font-mono text-accent mt-2">
+                    Email copied to clipboard!
+                  </p>
+                )}
               </div>
             </div>
           </div>
