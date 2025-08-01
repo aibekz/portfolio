@@ -1,11 +1,10 @@
 import { siteConfig } from '../constants/siteConfig';
 import { useEffect } from 'react';
 
-const SEO = ({ 
-  title, 
-  description = siteConfig.description, 
+const SEO = ({
+  title,
+  description = siteConfig.description,
   url = siteConfig.url,
-  image = siteConfig.ogImage,
   type = 'website'
 }) => {
   const fullTitle = title ? title : siteConfig.title;
@@ -32,26 +31,17 @@ const SEO = ({
     // Update meta tags
     updateMetaTag('meta[name="description"]', description);
     updateMetaTag('meta[name="author"]', siteConfig.name);
-    
+
     // Open Graph tags
     updateMetaTag('meta[property="og:title"]', fullTitle);
     updateMetaTag('meta[property="og:description"]', description);
     updateMetaTag('meta[property="og:url"]', url);
     updateMetaTag('meta[property="og:type"]', type);
     updateMetaTag('meta[property="og:site_name"]', siteConfig.name);
-    
-    if (image) {
-      updateMetaTag('meta[property="og:image"]', image);
-    }
-    
+
     // Twitter Card tags
-    updateMetaTag('meta[name="twitter:card"]', 'summary_large_image');
     updateMetaTag('meta[name="twitter:title"]', fullTitle);
     updateMetaTag('meta[name="twitter:description"]', description);
-    
-    if (image) {
-      updateMetaTag('meta[name="twitter:image"]', image);
-    }
 
     // Update canonical URL
     let canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -62,7 +52,7 @@ const SEO = ({
     }
     canonicalLink.setAttribute('href', url);
 
-  }, [fullTitle, description, url, image, type]);
+  }, [fullTitle, description, url, type]);
 
   // This component doesn't render anything
   return null;

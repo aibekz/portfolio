@@ -3,7 +3,6 @@ export const siteConfig = {
   title: "Aibek Z. - Software Developer",
   description: "Full-stack developer passionate about building meaningful web applications",
   url: "https://aibekz.com/",
-  ogImage: "https://aibekz.com/og-image.png",
   email: "aibek.zhumabekov@proton.me",
   author: {
     logo: "Aibek Z.",
