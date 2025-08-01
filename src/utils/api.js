@@ -148,8 +148,7 @@ class ApiClient {
   /**
    * Generic request method
    */
-  async request(endpoint, options = {}) {
-    const url = this.buildUrl(endpoint);
+  async request(url, options = {}) {
     const requestOptions = this.prepareOptions(options);
 
     try {
@@ -165,21 +164,29 @@ class ApiClient {
    * GET request
    */
   async get(endpoint, params = {}) {
-    const url = new URL(this.buildUrl(endpoint));
-    Object.keys(params).forEach(key => {
-      if (params[key] !== undefined && params[key] !== null) {
-        url.searchParams.append(key, params[key]);
-      }
-    });
+    const baseUrl = this.buildUrl(endpoint);
+    
+    // Handle query parameters
+    if (Object.keys(params).length > 0) {
+      const searchParams = new URLSearchParams();
+      Object.keys(params).forEach(key => {
+        if (params[key] !== undefined && params[key] !== null) {
+          searchParams.append(key, params[key]);
+        }
+      });
+      const queryString = searchParams.toString();
+      const finalUrl = `${baseUrl}${queryString ? `?${queryString}` : ''}`;
+      return this.request(finalUrl, { method: 'GET' });
+    }
 
-    return this.request(url.toString(), { method: 'GET' });
+    return this.request(baseUrl, { method: 'GET' });
   }
 
   /**
    * POST request
    */
   async post(endpoint, data = {}) {
-    return this.request(endpoint, {
+    return this.request(this.buildUrl(endpoint), {
       method: 'POST',
       body: data,
     });
@@ -189,7 +196,7 @@ class ApiClient {
    * PUT request
    */
   async put(endpoint, data = {}) {
-    return this.request(endpoint, {
+    return this.request(this.buildUrl(endpoint), {
       method: 'PUT',
       body: data,
     });
@@ -199,7 +206,7 @@ class ApiClient {
    * PATCH request
    */
   async patch(endpoint, data = {}) {
-    return this.request(endpoint, {
+    return this.request(this.buildUrl(endpoint), {
       method: 'PATCH',
       body: data,
     });
@@ -209,7 +216,7 @@ class ApiClient {
    * DELETE request
    */
   async delete(endpoint) {
-    return this.request(endpoint, { method: 'DELETE' });
+    return this.request(this.buildUrl(endpoint), { method: 'DELETE' });
   }
 }
 
