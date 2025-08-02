@@ -7,6 +7,7 @@ const SEO = ({
   url = siteConfig.url,
   type = 'website'
 }) => {
+  
   const fullTitle = title ? title : siteConfig.title;
 
   useEffect(() => {

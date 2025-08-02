@@ -1,14 +1,16 @@
 export const siteConfig = {
   name: "Aibek Zhumabekov",
-  title: "Aibek Z. - Software Developer",
-  description: "Full-stack developer passionate about building meaningful web applications",
+  title: "Aibek Z. - Software Engineer | Front-End Developer",
+  description: "Software engineer passionate about solving real-world problems with code.",
   url: "https://aibekz.com/",
-  email: "aibek.zhumabekov@proton.me",
+  linkedin: 'https://linkedin.com/in/aibekz',
+  github: 'https://github.com/aibekz',
+  email: "aibek.zhumabekov@outlook.com",
   author: {
     logo: "Aibek Z.",
     name: "Aibek Z.",
-    title: "Software Engineer",
+    title: "A Software Engineer.",
     greeting: "Hi.I'm ",
-    subtitle: "I'm passionate about building experiences that are impactful, accessible, and user-centric.",
+    subtitle: "I'm passionate about building experiences that are engaging, accessible, and user-centric."
   }
 };

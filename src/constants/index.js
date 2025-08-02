@@ -120,9 +120,10 @@ export const ROUTES = {
 export const SEO_CONFIG = {
   DEFAULT_TITLE: 'Aibek Z. - Software Engineer',
   TITLE_TEMPLATE: '%s | Aibek Z.',
-  DEFAULT_DESCRIPTION: 'Full-stack developer passionate about building meaningful web applications',
+  DEFAULT_DESCRIPTION: 'Software engineer passionate about solving real-world problems with code.',
   KEYWORDS: [
-    'software developer',
+    'software engineer',
+    'front-end developer',
     'full-stack developer',
     'web development',
     'react',

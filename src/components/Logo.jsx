@@ -7,7 +7,7 @@ const Logo = ({ onLogoClick }) => (
     className="flex items-center space-x-2"
     onClick={onLogoClick}
   >
-    <span className="text-2xl font-bold font-mono text-accent hover:underline">
+    <span className="text-2xl font-bold font-mono text-accent">
       {siteConfig.author.logo}
     </span>
   </Link>
