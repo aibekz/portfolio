@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Aibek Zhumabekov",
-  title: "Aibek Z. - Software Engineer | Front-End Developer",
-  description: "Software engineer passionate about solving real-world problems with code.",
+  title: "Aibek Z. - Software Engineer ( Front-End Developer )",
+  description: "Aibek is a software engineer based in Texas, USA, mainly focused on front-end development. He is passionate about building engaging, accessible, and user-centric web applications.",
   url: "https://aibekz.com/",
   linkedin: 'https://linkedin.com/in/aibekz',
   github: 'https://github.com/aibekz',
