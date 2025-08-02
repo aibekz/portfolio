@@ -7,6 +7,7 @@ import { AdminProvider } from './contexts/AdminContext.jsx';
 import Home from './pages/Home.jsx';
 import Contact from './pages/Contact.jsx';
 import About from './pages/About.jsx';
+import Works from './pages/Works.jsx';
 import Posts from './pages/Posts.jsx';
 import PostDetail from './pages/PostDetail.jsx';
 import AdminLogin from './pages/AdminLogin.jsx';
@@ -27,6 +28,7 @@ function AppContent() {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
+            <Route path="/works" element={<Works />} />
             <Route path="/posts" element={<Posts />} />
             <Route path="/posts/:slug" element={<PostDetail />} />
             <Route path="/admin/login" element={<AdminLogin />} />
