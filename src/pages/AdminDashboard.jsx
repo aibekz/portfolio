@@ -137,13 +137,13 @@ export default function AdminDashboard() {
                     <DocumentTextIcon className="w-6 h-6 text-matrix-green" />
                   </div>
                 </div>
-                <p className="text-3xl font-mono font-bold text-matrix-green">
+                <div className="text-3xl font-mono font-bold text-matrix-green">
                   {statsLoading ? (
                     <div className="w-8 h-8 border-2 border-matrix-green/30 border-t-matrix-green rounded-full animate-spin"></div>
                   ) : (
                     stats.totalPosts
                   )}
-                </p>
+                </div>
               </div>
               
               <div className="backdrop-blur-sm bg-bg-dark/50 border border-matrix-green/20 rounded-2xl p-6 shadow-2xl">
@@ -155,13 +155,13 @@ export default function AdminDashboard() {
                     <ClockIcon className="w-6 h-6 text-matrix-green" />
                   </div>
                 </div>
-                <p className="text-3xl font-mono font-bold text-matrix-green">
+                <div className="text-3xl font-mono font-bold text-matrix-green">
                   {statsLoading ? (
                     <div className="w-8 h-8 border-2 border-matrix-green/30 border-t-matrix-green rounded-full animate-spin"></div>
                   ) : (
                     stats.recentPosts
                   )}
-                </p>
+                </div>
               </div>
               
               <div className="backdrop-blur-sm bg-bg-dark/50 border border-matrix-green/20 rounded-2xl p-6 shadow-2xl">
