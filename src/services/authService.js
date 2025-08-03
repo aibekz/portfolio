@@ -148,7 +148,8 @@ class AuthService {
   // Helper method to make authenticated API requests
   async makeAuthenticatedRequest(url, options = {}) {
     try {
-      const response = await fetch(url, {
+      const fullUrl = url.startsWith('http') ? url : `${API_BASE_URL}${url}`;
+      const response = await fetch(fullUrl, {
         ...options,
         credentials: 'include', // Always include cookies
         headers: {
