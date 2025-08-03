@@ -1,12 +1,11 @@
-import { getCurrentYear } from '../utils';
 import { siteConfig } from '../constants/siteConfig';
 
 export default function Footer() {
   return (
-    <footer className="py-10">
-      <div className="flex flex-col items-center space-y-3">
+    <footer>
+      <div className="max-w-3xl mx-auto p-6 flex items-center justify-center">
         <p className="tracking-wide text-gray-300">
-          © {getCurrentYear()} <span className="font-mono">{siteConfig.author.logo}</span>
+          <span className="font-mono text-sm">git commit -m "Built by {siteConfig.author.logo}"</span>
         </p>
       </div>
     </footer>
