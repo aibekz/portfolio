@@ -1,8 +1,7 @@
+import { Link } from 'react-router-dom';
 import { siteConfig } from '../constants/siteConfig.js';
 import { SEO_CONFIG, ANIMATION_CONFIG } from '../constants/index.js';
 import SEO from '../components/SEO.jsx';
-import TypewriterText from '../components/TypewriterText.jsx';
-
 export default function Home() {
   return (
     <>
@@ -14,14 +13,10 @@ export default function Home() {
       <div className="flex-1 flex items-center justify-center text-center">
         <div className="text-primary max-w-3xl mx-auto px-6 py-8">
           <h1 className="text-2xl md:text-4xl font-semibold font-mono mb-4">
-            <TypewriterText
-              strings={[`${siteConfig.author.greeting}${siteConfig.author.name}`]}
-              delay={ANIMATION_CONFIG.TYPEWRITER_DELAY}
-              pauseFor={ANIMATION_CONFIG.TYPEWRITER_PAUSE}
-              loop={true}
-              deleteSpeed={ANIMATION_CONFIG.TYPEWRITER_DELETE_SPEED}
-              className="inline-block"
-            />
+            {siteConfig.author.greeting}
+            <Link to="/about" className="text-green-500 hover:underline">
+              {siteConfig.author.name}
+            </Link>
           </h1>
 
           <h2 className="text-2xl  md:text-4xl font-semibold font-mono mb-6 text-primary">
