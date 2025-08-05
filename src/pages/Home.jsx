@@ -14,7 +14,7 @@ export default function Home() {
         <div className="text-primary max-w-3xl mx-auto px-6 py-8">
           <h1 className="text-2xl md:text-4xl font-semibold font-mono mb-4">
             {siteConfig.author.greeting}
-            <Link to="/about" className="text-green-500 hover:underline">
+            <Link to="/about" className="text-accent hover:underline">
               {siteConfig.author.name}
             </Link>
           </h1>
