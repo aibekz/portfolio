@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { siteConfig } from '../constants/siteConfig';
+import React from 'react';
 
 const Logo = ({ onLogoClick }) => (
   <Link 
@@ -13,4 +14,4 @@ const Logo = ({ onLogoClick }) => (
   </Link>
 );
 
-export default Logo;
+export default React.memo(Logo);
