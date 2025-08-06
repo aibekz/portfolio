@@ -6,7 +6,7 @@ export default function Footer() {
     <footer>
       <div className="max-w-3xl mx-auto p-6 flex flex-col items-center justify-center space-y-4">
         <p className="text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} <Link to="/" className="font-mono text-sm text-accent hover:underline"> {siteConfig.author.name}</Link>
+          &copy; {new Date().getFullYear()} {siteConfig.author.name}
         </p>
       </div>
     </footer>
