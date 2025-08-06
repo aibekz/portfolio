@@ -65,7 +65,7 @@ const Contact = () => {
                     onClick={item.onClick}
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
-                    className="flex items-center gap-2 font-mono text-body nav-link underline cursor-pointer"
+                    className="flex items-center gap-2 font-mono text-accent hover:underline cursor-pointer"
                     title="Click to copy email to clipboard"
                   >
                     <span className="text-2xl">{item.icon}</span>
@@ -76,7 +76,7 @@ const Contact = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 font-mono text-body nav-link underline"
+                    className="flex items-center gap-2 font-mono text-accent hover:underline"
                   >
                     <span className="text-2xl">{item.icon}</span>
                     {item.name}

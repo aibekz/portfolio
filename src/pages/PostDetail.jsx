@@ -64,7 +64,7 @@ export default function PostDetail() {
           </p>
           <button
             onClick={() => navigate('/posts')}
-            className="nav-link underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
+            className="font-mono text-accent hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
           >
             Back to Posts
           </button>
@@ -85,7 +85,7 @@ export default function PostDetail() {
           </p>
           <button
             onClick={() => navigate('/posts')}
-            className="nav-link underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
+            className="font-mono text-accent hover:underline"
           >
             Back to Posts
           </button>
@@ -125,7 +125,7 @@ export default function PostDetail() {
           {/* Back button */}
           <button
             onClick={() => navigate('/posts')}
-            className="nav-link font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded mt-8"
+            className="font-mono text-accent hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded mt-8"
           >
             ← Back to Posts
           </button>

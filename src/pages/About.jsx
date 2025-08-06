@@ -46,7 +46,7 @@ export default function About() {
                 <p className="text-body leading-relaxed mb-6 font-mono text-primary">
                   Aibek also writes tech-related <Link
                     to="/posts"
-                    className='nav-link underline'
+                    className='text-accent hover:underline'
                   >posts</Link> sharing insights,
                   tutorials, and thoughts on software development, emerging technologies, and industry trends.
                 </p>

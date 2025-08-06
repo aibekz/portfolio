@@ -35,7 +35,7 @@ export default function MarkdownRenderer({ content, className = '' }) {
           a: ({ href, children }) => (
             <a
               href={href}
-              className="nav-link focus:outline-none focus:ring-2 focus:ring-offset-1 rounded"
+              className="text-accent hover:underline"
               target={href?.startsWith('http') ? '_blank' : undefined}
               rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
             >

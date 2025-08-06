@@ -4,7 +4,7 @@ const NavItem = ({ href, label, onClick, className }) => (
     <Link
         to={href}
         onClick={onClick}
-        className={`font-medium nav-link ${className}`}
+        className={`font-medium text-accent hover:underline ${className}`}
     >
         {label}
     </Link>

@@ -45,7 +45,7 @@ export default function Posts() {
             <p className="text-body font-mono text-red-600 mb-4">Error loading posts: {error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="nav-link underline font-mono text-body focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
+              className="font-mono text-accent hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
             >
               Try Again
             </button>
@@ -85,7 +85,7 @@ export default function Posts() {
                     <h2>
                       <Link 
                         to={`/posts/${post.slug}`}
-                        className="text-body font-mono nav-link focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
+                        className="text-body font-mono text-accent hover:underline"
                       >
                         {post.title}
                       </Link>

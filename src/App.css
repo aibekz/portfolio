@@ -69,17 +69,6 @@ html {
   border-color: #374151;
 }
 
-/* Navigation link styles */
-.nav-link {
-  color: #39FF14;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.nav-link:hover {
-  color: #39FF14;
-  text-decoration: underline;
-}
 
 /* Form input styling */
 .input-primary {
