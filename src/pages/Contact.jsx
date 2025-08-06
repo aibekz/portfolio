@@ -1,32 +1,15 @@
 import { siteConfig } from '../constants/siteConfig';
 import { formatEmail } from '../utils';
 import SEO from '../components/SEO';
-import { useState } from 'react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
-import { HiOutlineMail, HiOutlineClipboard, HiOutlineClipboardCheck } from 'react-icons/hi'; // Heroicons
+import { HiOutlineMail } from 'react-icons/hi'; // Heroicons
 
 const Contact = () => {
-  const [copied, setCopied] = useState(false);
-  const [hovered, setHovered] = useState(false);
-
-  const handleEmailClick = () => {
-    navigator.clipboard.writeText(siteConfig.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const getEmailIcon = () => {
-    if (copied) return <HiOutlineClipboardCheck />;
-    if (hovered) return <HiOutlineClipboard />;
-    return <HiOutlineMail />;
-  };
-
   const socialLinks = [
     {
       name: 'Email',
-      icon: getEmailIcon(),
-      onClick: handleEmailClick,
-      isCopy: true,
+      icon: <HiOutlineMail />,
+      href: `mailto:${siteConfig.email}`,
     },
     {
       name: 'LinkedIn',
@@ -60,28 +43,15 @@ const Contact = () => {
           <div className="space-y-6">
             {socialLinks.map((item) => (
               <div key={item.name}>
-                {item.isCopy ? (
-                  <button
-                    onClick={item.onClick}
-                    onMouseEnter={() => setHovered(true)}
-                    onMouseLeave={() => setHovered(false)}
-                    className="flex items-center gap-2 font-mono text-accent hover:underline cursor-pointer"
-                    title="Click to copy email to clipboard"
-                  >
-                    <span className="text-2xl">{item.icon}</span>
-                    {copied ? "Copied!" : formatEmail(siteConfig.email)}
-                  </button>
-                ) : (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 font-mono text-accent hover:underline"
-                  >
-                    <span className="text-2xl">{item.icon}</span>
-                    {item.name}
-                  </a>
-                )}
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 font-mono text-accent hover:underline"
+                >
+                  <span className="text-2xl">{item.icon}</span>
+                  {item.name === 'Email' ? formatEmail(siteConfig.email) : item.name}
+                </a>
               </div>
             ))}
           </div>
