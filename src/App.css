@@ -86,43 +86,6 @@ html {
   color: #d6d6d6;
 }
 
-/* Typewriter animation styles */
-.typewriter-container {
-  display: inline-block;
-}
-
-.typewriter-wrapper {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  color: #d6d6d6;
-}
-
-.typewriter-cursor {
-  color: #39FF14;
-  font-weight: 100;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-/* Fade-in animation for content after typewriter */
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 /* Grid pattern for background */
 .grid-pattern {
