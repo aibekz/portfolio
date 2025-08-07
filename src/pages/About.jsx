@@ -22,8 +22,8 @@ export default function About() {
           </div>
 
           <div className="space-y-8">
-            <p className="text-accent mb-6 text-center font-mono bg-black p-4">
-              Hello, I'm a software engineer based in USA!
+            <p className="text-accent text-sm md:text-base mb-6 text-center font-mono bg-black p-4">
+              &gt; Hello, I'm a software engineer based in USA!<span className="blinking-cursor">_</span>
             </p>
             <div className="flex flex-col md:flex-row items-start mb-12 gap-6">
               <div className="flex-1 text-left">
