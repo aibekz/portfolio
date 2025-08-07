@@ -22,16 +22,29 @@ export default function About() {
           </div>
 
           <div className="space-y-8">
-            <div className="">
-              <p className="text-body mb-6 text-center font-mono text-primary">
-                Hello, I'm a software engineer based in USA!
-              </p>
-              <h1 className="text-header font-bold font-mono mb-3 text-primary">
-                {siteConfig.name}
-              </h1>
-              <p className="text-body mb-8 font-mono text-primary">
-                Software Engineer ( Front-end Developer )
-              </p>
+            <p className="text-accent mb-6 text-center font-mono bg-black p-4">
+              Hello, I'm a software engineer based in USA!
+            </p>
+            <div className="flex flex-col md:flex-row items-start mb-12 gap-6">
+              <div className="flex-1 text-left">
+                <h1 className="text-2xl font-bold font-mono text-primary mb-2">
+                  {siteConfig.name}
+                </h1>
+                <p className="text-lg font-mono text-primary">
+                  Software Engineer (Front-end Developer)
+                </p>
+              </div>
+
+              <div className="relative w-28 h-28 mx-auto md:mx-0">
+                <div className="w-28 h-28 overflow-hidden rounded-full">
+                  <img
+                    src="/img/aibek.webp"
+                    alt="Aibek"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-black rounded-full"></div>
+              </div>
             </div>
 
             <section className="prose prose-lg max-w-none">
