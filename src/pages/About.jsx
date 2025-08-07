@@ -1,7 +1,9 @@
+import React, { Suspense, lazy } from 'react';
 import SEO from '../components/SEO';
 import { siteConfig } from '../constants/siteConfig';
-import DigitalRain from '../components/DigitalRain';
 import { Link } from 'react-router-dom';
+
+const DigitalRain = lazy(() => import('../components/DigitalRain'));
 
 export default function About() {
   const aboutDescription = "Learn more about Aibek Zhumabekov, a full-stack developer passionate about building meaningful web applications.";
@@ -17,7 +19,9 @@ export default function About() {
         <div className="max-w-3xl mx-auto px-6 py-8">
           <div className="mb-8">
             <div className="h-[500px] rounded-lg bg-gradient-to-br from-slate-900 to-slate-800">
-              <DigitalRain />
+              <Suspense fallback={<div className="w-full h-full bg-black" />}>
+                <DigitalRain />
+              </Suspense>
             </div>
           </div>
 
@@ -41,6 +45,7 @@ export default function About() {
                     src="/img/aibek.webp"
                     alt="Aibek"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <div className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-black rounded-full"></div>
