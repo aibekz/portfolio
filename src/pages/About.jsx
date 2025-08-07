@@ -25,7 +25,7 @@ export default function About() {
             <p className="text-accent text-sm md:text-base mb-6 text-center font-mono bg-black p-4">
               &gt; Hello, I'm a software engineer based in USA!<span className="blinking-cursor">_</span>
             </p>
-            <div className="flex flex-col md:flex-row items-start mb-12 gap-6">
+            <div className="flex flex-col md:flex-row items-start my-12 gap-6">
               <div className="flex-1 text-left">
                 <h1 className="text-2xl font-bold font-mono text-primary mb-2">
                   {siteConfig.name}
