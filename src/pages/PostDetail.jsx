@@ -97,7 +97,7 @@ export default function PostDetail() {
   return (
     <>
       <SEO 
-        title={`${post.title} - Aibek Z.`}
+        title={`${post.title} — Aibek Zhumabekov`}
         description={`${post.content.substring(0, 160)  }...`}
         url={`${siteConfig.url}/posts/${slug}`}
       />

@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAdmin } from '../contexts/AdminContext';
 import { usePosts } from '../contexts/PostsContext';
-import SEO from '../components/SEO';
-import { siteConfig } from '../constants/siteConfig';
 import Button from '../components/ui/Button';
 import { 
   PlusIcon, 
@@ -79,11 +77,6 @@ export default function AdminDashboard() {
 
   return (
     <>
-      <SEO 
-        title="Admin Dashboard - Aibek Z."
-        description="Admin dashboard for managing posts"
-        url={`${siteConfig.url}/admin`}
-      />
       <div className="min-h-screen bg-bg-dark relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0 opacity-5">

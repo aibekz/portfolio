@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdmin } from '../contexts/AdminContext';
-import SEO from '../components/SEO';
-import { siteConfig } from '../constants/siteConfig';
 import { ShieldCheckIcon, ArrowLeftIcon, ArrowRightIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function AdminLogin() {
@@ -44,11 +42,6 @@ export default function AdminLogin() {
 
   return (
     <>
-      <SEO 
-        title="Admin Login - Aibek Z."
-        description="Admin login page"
-        url={`${siteConfig.url}/admin/login`}
-      />
       <div className="min-h-screen flex items-center justify-center px-6 py-12 relative overflow-hidden">
         {/* Background grid pattern */}
         <div className="absolute inset-0 opacity-5">

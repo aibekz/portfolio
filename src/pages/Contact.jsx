@@ -26,7 +26,7 @@ const Contact = () => {
   return (
     <>
       <SEO 
-        title="Contact - Aibek Z."
+        title="Contact — Aibek Zhumabekov"
         description="Get in touch with Aibek Z for collaboration opportunities, project inquiries, or just to say hello."
         url={`${siteConfig.url}contact`}
       />

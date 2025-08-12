@@ -11,7 +11,7 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About - Aibek Z."
+        title="About — Aibek Zhumabekov"
         description={aboutDescription}
         url={`${siteConfig.url}about`}
       />
@@ -35,7 +35,7 @@ export default function About() {
                   {siteConfig.name}
                 </h1>
                 <p className="text-lg font-mono text-primary">
-                  Software Engineer (Front-end Developer)
+                  Software Engineer (Frontend Developer)
                 </p>
               </div>
 
@@ -55,7 +55,7 @@ export default function About() {
             <section className="prose prose-lg max-w-none">
               <div>
                 <p className="text-body leading-relaxed mb-4 font-mono text-primary">
-                  Aibek is a software engineer based in Texas, mainly focused on front-end development. He is passionate about building meaningful, engaging, accessible, and user-centric web applications. He has a knack for launching products—from planning and design to solving real-life problems with code.
+                  Aibek is a software engineer based in Texas, mainly focused on frontend development. He is passionate about building meaningful, engaging, accessible, and user-centric web applications. He has a knack for launching products—from planning and design to solving real-life problems with code.
                 </p>
                 <p className="text-body leading-relaxed mb-4 font-mono text-primary">
                   His approach combines technical expertise with creative problem-solving, ensuring that

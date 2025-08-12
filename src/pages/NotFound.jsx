@@ -22,7 +22,7 @@ export default function NotFound() {
                         className="text-accent hover:underline text-lg font-medium"
                         aria-label="Go back to home page"
                     >
-                        &larr; Go to Aibek Z Home 
+                        &larr; Go back to Home
                     </Link>
                 </div>
             </div>

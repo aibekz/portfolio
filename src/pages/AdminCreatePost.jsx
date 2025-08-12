@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAdmin } from '../contexts/AdminContext';
 import { usePosts } from '../contexts/PostsContext';
 import PostForm from '../components/PostForm';
-import SEO from '../components/SEO';
-import { siteConfig } from '../constants/siteConfig';
 import { ArrowLeftIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 export default function AdminCreatePost() {
@@ -37,11 +35,6 @@ export default function AdminCreatePost() {
 
   return (
     <>
-      <SEO 
-        title="Create Post - Admin - Aibek Z."
-        description="Create a new blog post"
-        url={`${siteConfig.url}/admin/posts/create`}
-      />
       <div className="min-h-screen bg-bg-dark relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0 opacity-5">

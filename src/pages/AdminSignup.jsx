@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAdmin } from '../contexts/AdminContext';
-import SEO from '../components/SEO';
-import { siteConfig } from '../constants/siteConfig';
 
 export default function AdminSignup() {
   const [formData, setFormData] = useState({
@@ -44,11 +42,6 @@ export default function AdminSignup() {
 
   return (
     <>
-      <SEO 
-        title="Admin Signup - Aibek Z."
-        description="Create admin account"
-        url={`${siteConfig.url}/admin/signup`}
-      />
       <div className="min-h-screen flex items-center justify-center px-6 py-12 relative overflow-hidden">
         {/* Background grid pattern */}
         <div className="absolute inset-0 opacity-5">
