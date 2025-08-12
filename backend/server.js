@@ -48,7 +48,7 @@ const generalLimiter = rateLimit({
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = NODE_ENV === 'production' 
-      ? ['https://aibekz.com', 'https://www.aibekz.com', 'https://aibekz.netlify.app']
+      ? ['https://aibek.me', 'https://www.aibek.me', 'https://aibekz.com', 'https://www.aibekz.com', 'https://aibekz.netlify.app']
       : ['http://localhost:3000','http://localhost:3001'];
     
     // Allow requests with no origin (like mobile apps or curl requests)

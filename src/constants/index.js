@@ -1,13 +1,17 @@
 // API Configuration
 export const API_CONFIG = {
-  BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api',
-  TIMEOUT: 10000,
+  BASE_URL: import.meta.env.VITE_API_BASE_URL || (
+    import.meta.env.PROD 
+      ? 'https://aibekz.onrender.com/api' 
+      : 'http://localhost:3001/api'
+  ),
+  TIMEOUT: 30000, // Increased timeout for production
   RETRY_ATTEMPTS: 3,
 };
 
 // Cache Configuration
 export const CACHE_CONFIG = {
-  POSTS_DURATION: 5 * 60 * 1000, // 5 minutes
+  POSTS_DURATION: 15 * 60 * 1000, // 15 minutes - increased for better performance
   USER_DURATION: 10 * 60 * 1000, // 10 minutes
   STATIC_DURATION: 60 * 60 * 1000, // 1 hour
 };
@@ -132,8 +136,8 @@ export const SEO_CONFIG = {
     'portfolio',
   ],
   AUTHOR: 'Aibek Zhumabekov',
-  SITE_URL: 'https://aibekz.com',
-  OG_IMAGE: 'https://aibekz.com/og-image.png',
+  SITE_URL: 'https://aibek.me',
+  OG_IMAGE: 'https://aibek.me/og-image.png',
 };
 
 // Feature Flags

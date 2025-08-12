@@ -8,17 +8,19 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
+    const limit = Math.min(parseInt(req.query.limit) || 50, 100); // Increased default, max 100
     const skip = (page - 1) * limit;
 
-    // Get total count for pagination info
-    const totalPosts = await Post.countDocuments();
-    
-    const posts = await Post.find()
-      .sort({ date: -1 }) // Sort by date, newest first
-      .skip(skip)
-      .limit(limit)
-      .lean();
+    // Use Promise.all to run queries in parallel for better performance
+    const [posts, totalPosts] = await Promise.all([
+      Post.find()
+        .select('title content slug date createdAt updatedAt') // Only select needed fields
+        .sort({ date: -1 }) // Sort by date, newest first
+        .skip(skip)
+        .limit(limit)
+        .lean(), // Use lean() for better performance
+      Post.countDocuments()
+    ]);
     
     // Format posts for frontend
     const formattedPosts = posts.map(post => ({
@@ -30,6 +32,12 @@ router.get('/', async (req, res) => {
       createdAt: post.createdAt,
       updatedAt: post.updatedAt
     }));
+    
+    // Set cache headers for better performance
+    res.set({
+      'Cache-Control': 'public, max-age=300', // Cache for 5 minutes
+      'ETag': `"posts-${totalPosts}-${posts.length}"`
+    });
     
     res.json({
       posts: formattedPosts,

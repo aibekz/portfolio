@@ -32,8 +32,12 @@ export function PostsProvider({ children }) {
         return;
       }
 
-      setLoading(true);
+      // Only show loading if we don't have cached posts
+      if (!cache.posts || cache.posts.length === 0) {
+        setLoading(true);
+      }
       setError(null);
+      
       const fetchedPosts = await postService.getAllPosts();
       
       // Update cache
@@ -45,6 +49,11 @@ export function PostsProvider({ children }) {
       const errorMessage = err.message || ERROR_MESSAGES.GENERIC;
       setError(errorMessage);
       console.error('Error loading posts:', err);
+      
+      // If we have cached posts, keep showing them even on error
+      if (cache.posts && cache.posts.length > 0) {
+        setPosts(cache.posts);
+      }
     } finally {
       setLoading(false);
     }
