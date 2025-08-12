@@ -5,25 +5,6 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Domain redirect - always redirect to aibek.me
-[[redirects]]
-  from = "https://aibekz.com/*"
-  to = "https://aibek.me/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://www.aibekz.com/*"
-  to = "https://aibek.me/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://www.aibek.me/*"
-  to = "https://aibek.me/:splat"
-  status = 301
-  force = true
-
 [[redirects]]
   from = "/api/*"
   to = "https://aibekz.onrender.com/api/:splat"
