@@ -2,7 +2,7 @@ import React from 'react';
 import NavItem from './NavItem.jsx';
 
 const MobileMenu = ({ menuOpen, closeMenu, navigationLinks }) => {
-    const menuClasses = `fixed top-[72px] left-0 h-screen w-full bg-primary z-40 transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : '-translate-x-full'} md:hidden`;
+    const menuClasses = `fixed top-[72px] right-0 h-screen w-full bg-primary z-40 transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden`;
 
     return (
         <div className={menuClasses}>

@@ -1,4 +1,4 @@
-import { HiMenu, HiX } from 'react-icons/hi';
+import { HiX } from 'react-icons/hi';
 import Logo from './Logo.jsx';
 import MobileMenu from './MobileMenu.jsx';
 import NavItem from './NavItem.jsx';
@@ -33,14 +33,14 @@ const Navbar = () => {
                     <div className="md:hidden flex items-center">
                         <button
                             onClick={toggleMenu}
-                            className="focus:outline-none p-2"
+                            className="focus:outline-none p-2 text-matrix-green font-medium hover:underline transition-all duration-200"
                             aria-label="Toggle menu"
                             aria-expanded={menuOpen}
                         >
                             {menuOpen ? (
-                                <HiX className="w-6 h-6 text-matrix-green" />
+                                <HiX className="w-6 h-6" />
                             ) : (
-                                <HiMenu className="w-6 h-6 text-matrix-green" />
+                                'Menu'
                             )}
                         </button>
                     </div>
