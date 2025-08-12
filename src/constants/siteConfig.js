@@ -7,7 +7,7 @@ export const siteConfig = {
   github: 'https://github.com/aibekz',
   email: "aibek.zhumabekov@outlook.com",
   author: {
-    logo: "Aibek",
+    logo: "aibek.me",
     name: "Aibek",
     title: "A Software Engineer.",
     greeting: "Hi! I'm ",
