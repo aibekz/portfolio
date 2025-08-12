@@ -19,8 +19,8 @@ export default function Posts() {
     return (
       <>
         <SEO 
-          title="Posts - Aibek Z."
-          description="Blog posts and articles by Aibek Z."
+          title="Posts — Aibek Zhumabekov"
+          description="Blog posts and articles by Aibek Zhumabekov"
           url={`${siteConfig.url}/posts`}
         />
         <div className="flex-1">
@@ -36,8 +36,8 @@ export default function Posts() {
     return (
       <>
         <SEO 
-          title="Posts - Aibek Z."
-          description="Blog posts and articles by Aibek Z."
+          title="Posts — Aibek Zhumabekov"
+          description="Blog posts and articles by Aibek Zhumabekov"
           url={`${siteConfig.url}/posts`}
         />
         <div className="flex-1">
@@ -58,8 +58,8 @@ export default function Posts() {
   return (
     <>
       <SEO 
-        title="Posts - Aibek Z."
-        description="Blog posts and articles by Aibek Z."
+        title="Posts — Aibek Zhumabekov"
+        description="Blog posts and articles by Aibek Zhumabekov"
         url={`${siteConfig.url}/posts`}
       />
       <div className="flex-1">
