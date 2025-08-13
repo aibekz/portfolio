@@ -11,7 +11,7 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About — Aibek Zhumabekov"
+        title="About | Aibek Zhumabekov"
         description={aboutDescription}
         url={`${siteConfig.url}about`}
       />

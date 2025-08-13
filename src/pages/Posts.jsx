@@ -19,7 +19,7 @@ export default function Posts() {
     return (
       <>
         <SEO 
-          title="Posts — Aibek Zhumabekov"
+          title="Posts | Aibek Zhumabekov"
           description="Blog posts and articles by Aibek Zhumabekov"
           url={`${siteConfig.url}/posts`}
         />
@@ -36,7 +36,7 @@ export default function Posts() {
     return (
       <>
         <SEO 
-          title="Posts — Aibek Zhumabekov"
+          title="Posts | Aibek Zhumabekov"
           description="Blog posts and articles by Aibek Zhumabekov"
           url={`${siteConfig.url}/posts`}
         />
@@ -58,7 +58,7 @@ export default function Posts() {
   return (
     <>
       <SEO 
-        title="Posts — Aibek Zhumabekov"
+        title="Posts | Aibek Zhumabekov"
         description="Blog posts and articles by Aibek Zhumabekov"
         url={`${siteConfig.url}/posts`}
       />
