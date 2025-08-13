@@ -55,7 +55,7 @@ export default function About() {
             <section className="prose prose-lg max-w-none">
               <div>
                 <p className="text-body leading-relaxed mb-4 font-mono text-primary">
-                  Aibek is a software engineer based in Texas, mainly focused on frontend development. He is passionate about building meaningful, engaging, accessible, and user-centric web applications. He has a knack for launching products—from planning and design to solving real-life problems with code.
+                  Aibek is a software engineer based in United States, mainly focused on frontend development. He is passionate about building meaningful, accessible, and user-centric web applications. He has a knack for launching products—from planning and design to solving real-life problems with code.
                 </p>
                 <p className="text-body leading-relaxed mb-4 font-mono text-primary">
                   His approach combines technical expertise with creative problem-solving, ensuring that
