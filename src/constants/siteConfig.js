@@ -10,7 +10,7 @@ export const siteConfig = {
     logo: "Aibek",
     name: "Aibek",
     title: "A Software Engineer.",
-    greeting: "Hi! I'm ",
+    greeting: "Hi, I'm ",
     subtitle: "I'm passionate about building experiences that are engaging, accessible, and user-centric."
   }
 };

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { siteConfig } from '../constants/siteConfig.js';
-import { SEO_CONFIG, ANIMATION_CONFIG } from '../constants/index.js';
+import { SEO_CONFIG } from '../constants/index.js';
 import SEO from '../components/SEO.jsx';
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
           <h1 className="text-2xl md:text-4xl font-semibold font-mono mb-4">
             {siteConfig.author.greeting}
             <Link to="/about" className="text-accent hover:underline">
-              {siteConfig.author.name}.
+              {siteConfig.author.name} Z.
             </Link>
           </h1>
 
